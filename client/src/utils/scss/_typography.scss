@@ -1,0 +1,59 @@
+@import url('https://fonts.googleapis.com/css?family=Heebo&display=swap');
+@import url('https://fonts.googleapis.com/css?family=Heebo:300&display=swap');
+
+
+html {
+    font-size: 16px;
+  }
+  @media (max-width: 992px) {
+    html { font-size: 16px; }
+  }
+  @media (max-width: 768px) {
+    html { font-size: 15px; }
+  }
+  @media (max-width: 576px) {
+    html { font-size: 14px; }
+  }
+
+ 
+h1 {
+    font-family: 'Heebo', sans-serif;
+    font-size: 4rem;
+    text-align: center;
+}
+
+h2 {
+    font-family: 'Heebo', sans-serif;
+    text-align: center;
+    font-size: 3rem;  
+}
+
+h3 {
+    font-family: 'Heebo', sans-serif;
+    text-align: center;
+    font-size: 2.5rem;   
+}
+
+h4 {
+    font-family: 'Heebo', sans-serif;
+    text-align: center;
+    font-size: 2rem;   
+}
+
+h5 {
+    font-family: 'Heebo', sans-serif;
+    text-align: center;
+    font-size: 1.75rem;   
+}
+
+h6 {
+    font-family: 'Heebo', sans-serif;
+    text-align: center;
+    font-size: 1.5rem;   
+}
+
+p {
+    font-family: 'Heebo', sans-serif;
+    text-align: center;
+    font-size: 1rem;
+}
