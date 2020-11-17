@@ -3,10 +3,30 @@
 @import url('https://fonts.googleapis.com/css?family=Heebo&display=swap');
 @import url('https://fonts.googleapis.com/css?family=Heebo:300&display=swap');
 
-.welcome {
+.home {
 
 
-    
+.bg {
+height: 100vh;
+background-image: url('../../../../images/home/soulfood-bg.jpg');
+background-size: cover;
+animation-name: background;
+animation-duration: 20s;
+animation-timing-function: ease-in-out;
+animation-iteration-count: infinite;
+
+}
+
+
+@keyframes background {
+    0% {background-color:red; }
+  25%  {background-color:yellow;}
+  50%  {background-color:blue; }
+  75%  {background-color:green;}
+  100% {background-color:red; }
+
+}
+
 
     
 }

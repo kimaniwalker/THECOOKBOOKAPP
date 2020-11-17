@@ -35,7 +35,6 @@ router.get('/:id', async (req, res, next) => {
 
 router.post('/', async (req, res, next) => {
     let insertObject = {
-        name: req.body.name,
         description: req.body.description,
         cookbookId: req.body.cookbookId,
 
@@ -60,7 +59,6 @@ router.post('/', async (req, res, next) => {
 
 router.put('/', async (req, res, next) => {
     let insertObject = {
-        name: req.body.name,
         description: req.body.description,
         cookbookId: req.body.cookbookId,
 

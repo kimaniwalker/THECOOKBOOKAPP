@@ -41,12 +41,12 @@ cookbook_ingredients.one = (id) => {
     })
 }
 
-cookbook_ingredients.insert = ({id,cookbookId,ingredient}) => {
+cookbook_ingredients.insert = (cookbookId,ingredient) => {
 
 
     return new Promise((resolve, reject) => {
 
-        pool.query(`INSERT INTO cookbook_ingredients SET ?`, [id,cookbookId,ingredient ] ,(err, results) =>{
+        pool.query(`INSERT INTO cookbook_ingredients SET ?`, [cookbookId,ingredient ] ,(err, results) =>{
 
             if(err) {
                 return reject(err);

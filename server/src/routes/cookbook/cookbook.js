@@ -64,6 +64,7 @@ router.post('/', async (req, res, next) => {
 
 router.put('/', async (req, res, next) => {
     let insertObject = {
+        id: req.body.id,
         name: req.body.name,
         tags: req.body.tags,
         _lastModified: req.body._lastModified,
@@ -83,7 +84,7 @@ router.put('/', async (req, res, next) => {
     }
 })
 
-router.delete('/:id', async (req, res, next) => {
+router.delete('/', async (req, res, next) => {
 
     try {
         let results = await cookbook.delete(req.params.id);

@@ -41,12 +41,12 @@ cookbook_directions.one = (id) => {
     })
 }
 
-cookbook_directions.insert = ({id,cookbookId,description}) => {
+cookbook_directions.insert = (cookbookId,description) => {
 
 
     return new Promise((resolve, reject) => {
 
-        pool.query(`INSERT INTO cookbook_directions SET ?`, [id,cookbookId,description ] ,(err, results) =>{
+        pool.query(`INSERT INTO cookbook_directions SET ?`, [cookbookId,description ] ,(err, results) =>{
 
             if(err) {
                 return reject(err);
@@ -58,7 +58,7 @@ cookbook_directions.insert = ({id,cookbookId,description}) => {
     })
 }
 
-cookbook_directions.update = ({ cookbookId,description }) => {
+cookbook_directions.update = ( cookbookId,description ) => {
 
 
     return new Promise((resolve, reject) => {

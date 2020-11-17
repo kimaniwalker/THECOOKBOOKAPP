@@ -1,10 +1,5 @@
 @import "../variables";
 
-@font-face {
-    font-family: "Gellato Rush";
-    src: url("../../../../Gellato\ Rush.otf") format("otf"),
-        url("../../../../Gellato\ Rush.otf") format("opentype")
-}
 
 
 .login {
@@ -31,11 +26,5 @@
     }
 
 
-
-    h2 {
-        font-family: "Gellato Rush";
-        font-weight: normal;
-        font-style: normal;
-    }
 
 }

@@ -58,12 +58,12 @@ cookbook.insert = (id,name,tags,_lastModified,images) => {
     })
 }
 
-cookbook.update = ({ name, tags, _lastModified, images }) => {
+cookbook.update = ({ id, name, tags, _lastModified, images }) => {
 
 
     return new Promise((resolve, reject) => {
 
-        pool.query(`UPDATE cookbook SET name = ?,tags = ?,_lastModified = ? ,images = ? WHERE id = ? `, [ name, tags, _lastModified, images], (err, results) =>{
+        pool.query(`UPDATE cookbook SET name = ?,tags = ?,_lastModified = ? ,images = ? WHERE id = ? `, [ name, tags, _lastModified, images, id], (err, results) =>{
 
             if(err) {
                 return reject(err);
