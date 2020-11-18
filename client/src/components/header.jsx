@@ -27,12 +27,6 @@ export default function Header() {
                                  <a href="#">Recipes</a>
                              </li>
                              <li>
-                                 <a href="#">Store</a>
-                             </li>
-                             <li>
-                                 <a href="#">Cart</a>
-                             </li>
-                             <li>
                                  <a href="#">Contact</a>
                              </li>
                              

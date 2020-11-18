@@ -1,0 +1,9 @@
+@import "../../variables";
+@import "../../typography";
+
+.recipeScreen {
+    #commentInput {
+        color: $dark;
+        width: 50%;
+    }
+}
