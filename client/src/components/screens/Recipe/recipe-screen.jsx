@@ -1,6 +1,6 @@
 import React, { useState } from 'react'
-import '../../../utils/scss/pages/cookbook/_recipescreen'
-
+import '../../../utils/scss/pages/cookbook/_recipeScreen'
+import Header from '../../header';
 export default function RecipeScreen(props) {
 
     const [comment, setComment] = useState('')
@@ -9,8 +9,10 @@ export default function RecipeScreen(props) {
 
     return (
         <>
+            <Header />
             <main className="recipeScreen">
-                <div className="container">
+            
+                <div id="recipeContainer" className="container">
                     <div className="row d-flex flex-wrap">
                         <div className="col-lg-8">
                             <div className="row py-3">
@@ -21,6 +23,9 @@ export default function RecipeScreen(props) {
                             </div>
                             <div className="row py-3">
                                 <h4>Skill Level</h4>
+                            </div>
+                            <div className="row py-3">
+                                <h4>Tags</h4>
                             </div>
 
                             <div className="row py-3">

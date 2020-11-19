@@ -1,0 +1,30 @@
+@import "../variables";
+@import "../typography";
+
+.banner {
+    height: 25vh;
+
+    background-image: url(../../../../images/home/soulfood-bg.jpg);
+    background-size: cover;
+    
+    .banner-bg {
+        height: 17vh;
+        background-color: $light;
+        align-items: center; 
+          
+    }
+
+    .outline {
+        outline: 1px solid black;
+        padding: 20px 40px 20px;
+    }  
+
+    .banner-bg:hover {
+        height: 19vh;
+        background-color: $light;
+        align-items: center;
+        border: 1px solid lightgrey;
+          
+    }
+    
+}
