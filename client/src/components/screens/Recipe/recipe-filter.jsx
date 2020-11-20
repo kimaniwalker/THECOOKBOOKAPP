@@ -1,7 +1,10 @@
-import React from 'react'
+import React, { useState } from 'react'
 import '../../../utils/scss/pages/cookbook/_recipeFilter'
 
 export default function RecipeFilter(props) {
+
+    const [query, setQuery] = useState('');
+    const [results, setResults] = useState([]);
 
 
     return (

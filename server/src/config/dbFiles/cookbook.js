@@ -41,12 +41,12 @@ cookbook.one = (id) => {
     })
 }
 
-cookbook.insert = (id,name,tags,_lastModified,images) => {
+cookbook.insert = (id, name , images, tags, serving_size, calories,skill_level, featured) => {
 
 
     return new Promise((resolve, reject) => {
 
-        pool.query(`INSERT INTO cookbook SET ?`, [id,name,tags,_lastModified,images ] ,(err, results) =>{
+        pool.query(`INSERT INTO cookbook SET ?`, [id, name , images, tags, serving_size, calories,skill_level, featured] ,(err, results) =>{
 
             if(err) {
                 return reject(err);
@@ -58,12 +58,12 @@ cookbook.insert = (id,name,tags,_lastModified,images) => {
     })
 }
 
-cookbook.update = ({ id, name, tags, _lastModified, images }) => {
+cookbook.update = ({id ,name , images, tags, serving_size, calories,skill_level, featured, approved }) => {
 
 
     return new Promise((resolve, reject) => {
 
-        pool.query(`UPDATE cookbook SET name = ?,tags = ?,_lastModified = ? ,images = ? WHERE id = ? `, [ name, tags, _lastModified, images, id], (err, results) =>{
+        pool.query(`UPDATE cookbook SET name = ?,tags = ?,_lastModified = ? ,images = ? WHERE id = ? `, [id, name , images, tags, serving_size, calories,skill_level, featured, approved], (err, results) =>{
 
             if(err) {
                 return reject(err);
