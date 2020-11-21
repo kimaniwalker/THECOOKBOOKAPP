@@ -1,9 +1,7 @@
 @import "../../variables";
 @import "../../typography";
 
-
-.cookbook { 
-    
+.tags {
     background: $primary;
     height: 100%;
     padding-top: 200px;
@@ -13,13 +11,7 @@
     .outline {
         outline: 1px solid black;
         padding: 20px 40px 20px;
-    }
-    
-    .container {
-        width: 50%;
-    }
-
-    
+    }   
 
     
 
@@ -31,6 +23,7 @@
         border-color: $primary;
         
     }
+
 
     
 
@@ -50,15 +43,13 @@
         margin: 10px 0px 10px
     }
 
+    
+
 
     @media only screen and (max-width: 790px) {
         
         .remove {
             display: none;
-        }
-
-        .container {
-            width: 85%;
         }
 
 

@@ -7,6 +7,7 @@ import Welcome from './welcome';
 import BlogAdmin from './admin';
 import CheckoutForm from './checkoutForm2';
 import RecipeScreen from './screens/Recipe/recipe-screen';
+import CreateRecipe from './screens/Recipe/create-recipe';
 
 
 
@@ -20,7 +21,7 @@ class Navigation extends Component {
                 <Fragment>
                     <Switch>
                         <Route exact path="/" component={Welcome} />
-                        <Route exact path="/recipe" component={RecipeScreen} />
+                        <Route exact path="/recipe" component={CreateRecipe} />
                         <PrivateRoute path="/admin" component={BlogAdmin} />
 
                         <Route path="/login" component={Login} />

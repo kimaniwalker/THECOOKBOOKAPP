@@ -72,21 +72,21 @@ input[type=text]::placeholder {
   font-family: 'Open Sans Condensed', sans-serif;
   font-weight: 300;
   font-size: 1.5rem;
-  color: white;
+  color: $dark;
 }
 
 input[type=text] {
         
-  max-width: 50vw;
-  min-width: 50vw;
+  max-width: 40vw;
+  min-width: 40vw;
   padding: 15px 0px 15px;
   margin: 2.5rem 0px 2.5rem;
   border: none;
   border-bottom: 4px solid $secondary;
   background-color: transparent;
-  color: white;
+  color: $dark;
   text-align: center;
-  text-transform: uppercase;
+  
 
   
 }
@@ -117,15 +117,15 @@ li {
 @media only screen and (min-width: 600px) {
   input[type=text] {
         
-    max-width: 20vw;
+    max-width: 40vw;
     padding: 15px 0px 15px;
     margin: 2.5rem 0px 2.5rem;
     border: none;
     border-bottom: 4px solid $secondary;
     background-color: transparent;
-    color: white;
+    color: $dark;
     text-align: center;
-    text-transform: uppercase;
+    
   
     
   }   
