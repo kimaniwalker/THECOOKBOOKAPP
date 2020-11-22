@@ -17,6 +17,16 @@
     
     .container {
         width: 50%;
+        
+
+    }
+
+    #cookbookcontainer {
+        border-radius: 25px;
+        padding: 40px 0px 40px;
+        box-shadow: 2px 2px $dark;
+        background: whitesmoke;
+        
     }
 
     
@@ -28,10 +38,12 @@
         padding: 10px 15px 10px;
         border-radius: 100%;
         align-items: center;
-        border-color: $primary;
+        background-clip: padding-box;
+        
         
     }
 
+    
     
 
     hr {
@@ -53,13 +65,23 @@
 
     @media only screen and (max-width: 790px) {
         
-        .remove {
-            display: none;
-        }
+        
 
         .container {
             width: 85%;
         }
+
+
+    
+    }
+
+    @media only screen and (max-width: 1291px) {
+        
+        .remove {
+            display: none;
+        }
+
+        
 
 
     
