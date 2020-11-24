@@ -23,6 +23,13 @@
         border-color: $primary;
         
     }
+    #directionsContainer {
+        border-radius: 25px;
+        padding: 40px 0px 40px;
+        box-shadow: 2px 2px $dark;
+        background: whitesmoke;
+        
+    }
 
 
     
@@ -43,16 +50,36 @@
         margin: 10px 0px 10px
     }
 
+    .container {
+        width: 50%;
+        
+
+    }
+
     
 
 
     @media only screen and (max-width: 790px) {
         
+    
+
+        .container {
+            width: 85%;
+        }
+
+    
+    }
+
+
+    @media only screen and (max-width: 1291px) {
+        
         .remove {
             display: none;
         }
 
+    }  
+
 
     
-    }
+    
 }

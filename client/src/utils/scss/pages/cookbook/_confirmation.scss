@@ -1,7 +1,9 @@
 @import "../../variables";
 @import "../../typography";
 
-.tags {
+
+.confirmation { 
+    
     background: $primary;
     height: 100%;
     padding-top: 200px;
@@ -11,20 +13,15 @@
     .outline {
         outline: 1px solid black;
         padding: 20px 40px 20px;
-    }   
-
+    }
     
-
-    .stepBorder {
-        background: white;
-        padding: 10px 15px 10px;
-        border-radius: 100%;
-        align-items: center;
-        border-color: $primary;
+    .container {
+        width: 50%;
         
+
     }
 
-    #tagsContainer {
+    #confirmationContainer {
         border-radius: 25px;
         padding: 40px 0px 40px;
         box-shadow: 2px 2px $dark;
@@ -32,51 +29,42 @@
         
     }
 
+    
 
+    
     
 
     hr {
-        width: 85px;
+        width: 75px;
         background-color: white;
     }
 
-    .continue {
-        outline: none;
-        border: none;
-        padding: 0;
-        margin: 0;
-    }
+    
 
     .space {
         margin: 10px 0px 10px
     }
 
-    .container {
-        width: 50%;
-        
-
-    }
-
-    
-
 
     @media only screen and (max-width: 790px) {
         
-    
+        
 
         .container {
             width: 85%;
         }
 
+
     
     }
 
-
     @media only screen and (max-width: 1291px) {
         
-        .remove {
-            display: none;
-        }
+        
 
+        
+
+
+    
     }
 }

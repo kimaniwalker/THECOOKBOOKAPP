@@ -17,7 +17,7 @@ export default function CreateRecipe(props) {
     const [calories, setCalories] = useState('')
     const [featured, setFeatured] = useState(false);
     const [skillLevel, setSkillLevel] = useState('');
-    const [step, setStep] = useState(2);
+    const [step, setStep] = useState(5);
     const [approved, setApproved] = useState(false);
 
     const [cookbookId, setCookbookId] = useState(id);
