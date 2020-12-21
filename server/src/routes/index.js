@@ -8,6 +8,7 @@ import profileRouter from './profile';
 import cookbookRouter from './cookbook/cookbook';
 import cookbookIngredientsRouter from './cookbook/cookbook_ingredients';
 import cookbookDirectionsRouter from './cookbook/cookbook_directions';
+import cookbookCommentsRouter from './cookbook/cookbook_comments';
 
 import { isLoggedIn, tokenMiddleware } from '../middleware/auth.mw';
 import WorkRequestRouter from './workrequest';
@@ -28,6 +29,7 @@ router.use('/auth', authRouter);
 router.use('/cookbook', cookbookRouter);
 router.use('/cookbook-directions', cookbookDirectionsRouter);
 router.use('/cookbook-ingredients', cookbookIngredientsRouter);
+router.use('/cookbook-comments', cookbookCommentsRouter);
 router.use('/donate', stripeDonationsRouter);
 router.use('/contact', contactRouter);
 router.use('/users', usersRouter);

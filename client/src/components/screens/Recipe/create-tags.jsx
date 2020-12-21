@@ -89,21 +89,21 @@ export default function CreateTags(props) {
                     <div className="row justify-content-center">
                         <span
                         >
-                            <button className="continue py-5 mx-3"
+                            <button className="btn continue py-5 mx-3"
                                 onClick={back}><i className="fas fa-arrow-circle-left fa-2x"></i></button>
 
 
                         </span>
                         <span
                         >
-                            <button className="continue py-5 mx-3"
+                            <button className="btn continue py-5 mx-3"
                                 disabled={props.values.tags.length < 1}
                                 onClick={(e) => props.handleTagsPush()}><i class="fas fa-plus-circle fa-2x"></i></button>
 
                         </span>
                         <span >
 
-                            <button className="continue py-5 mx-3"
+                            <button className="btn continue py-5 mx-3"
                                 onClick={next}
                                 disabled={props.values.tagsList.length < 1}><i className="fas fa-arrow-circle-right fa-2x"></i></button>
 

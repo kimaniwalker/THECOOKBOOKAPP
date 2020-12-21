@@ -2,6 +2,7 @@ import React, { Component, Fragment } from 'react';
 import '../utils/scss/pages/_welcome.scss';
 import Banner from './banner';
 import Header from './header';
+import OurMenu from './ourMenu';
 import CreateCookbook from './screens/Recipe/create-cookbook';
 import CreateRecipe from './screens/Recipe/create-recipe';
 import RecipeFilter from './screens/Recipe/recipe-filter';
@@ -19,12 +20,12 @@ export default function Welcome() {
           
         </div>
 
-
-        {/* <CreateRecipe /> */}
       </main>
       <RecipeOfTheWeek />
-      <Banner message={'Submit A Recipe'} />
-      <RecipeFilter />
+      <Banner message="Purchase A Copy Of The Kountry Cookin Cookbook"/>
+      <OurMenu />
+
+      
     </Fragment>
 
   )

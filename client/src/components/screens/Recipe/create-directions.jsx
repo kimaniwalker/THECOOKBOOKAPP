@@ -95,22 +95,22 @@ export default function CreateDirections(props) {
                             <span
                             >
 
-                                <button className="continue py-5 mx-3"
+                                <button className="btn continue py-5 mx-3"
                                     onClick={back}><i className="fas fa-arrow-circle-left fa-2x"></i></button>
 
 
                             </span>
                             <span
                             >
-                                <button className="continue py-5 mx-3"
+                                <button className="btn continue py-5 mx-3"
                                     disabled={props.values.direction.length < 1}
-                                    onClick={(e) => props.handleDirectionsPush()}><i class="fas fa-plus-circle fa-2x"></i></button>
+                                    onClick={(e) => props.handleDirectionsPush()}><i className="fas fa-plus-circle fa-2x"></i></button>
 
 
                             </span>
                             <span >
 
-                                <button className="continue py-5 mx-3"
+                                <button className="btn continue py-5 mx-3"
                                     onClick={next}
                                     disabled={props.values.directionsList.length < 1}><i className="fas fa-arrow-circle-right fa-2x"></i></button>
 

@@ -1,26 +1,145 @@
-import React from 'react'
+import React, { useEffect, useState } from 'react'
 import Header from '../../header'
 import '../../../utils/scss/pages/cookbook/_confirmation'
+import { async } from 'regenerator-runtime';
 
 export default function Confirmation(props) {
 
+    const [cookbookId, setCookbookId] = useState('');
+
+    useEffect(() => {
+        handleCookbook();
+        
+        
+      },[]);
+    
+    
     const back = (e) => {
         e.preventDefault();
         props.prevStep();
     };
 
+    const handleCookbook = async(e) => {
+
+        let cookbookObject = {
+            name: props.values.name,
+            images: props.values.images.name,
+            tags: JSON.stringify(props.values.tagsList),
+            serving_size: props.values.servingSize,
+            calories: props.values.calories,
+            skill_level: props.values.skillLevel,
+            featured: props.values.featured,
+            approved: props.values.approved
+    
+        }
+
+        
+
+        console.log(cookbookObject)
+
+        
+        
+        
+        
+        
+        
+        try {
+
+            let res = await fetch('/api/cookbook', {
+                method: 'POST',
+                body: JSON.stringify(cookbookObject),
+                headers: new Headers({ "Content-Type": "application/json" })
+
+            });
+            let id = await res.json();
+            console.log(id)
+            setCookbookId(id.id);
+            
+
+            console.log(cookbookId)
+        } catch (e) {
+            console.log(e);
+        }
+
+        
+
+
+    }
+
+    
+
+
+    const handleDirections = async(cookbookId) => {
+         let directionsObject = {
+             cookbookId: cookbookId,
+             description: JSON.stringify(props.values.directionsList)
+         }
+
+         console.log(directionsObject)
+
+         try {
+
+            let res = await fetch('/api/cookbook-directions', {
+                method: 'POST',
+                body: JSON.stringify(directionsObject),
+                headers: new Headers({ "Content-Type": "application/json" })
+
+            });
+            let id = await res.json();
+           
+            console.log(id)
+        } catch (e) {
+
+        }
+
+    }
+
+    const handleIngredients = async(cookbookId) => {
+        let ingredientsObject = {
+            cookbookId: cookbookId,
+            ingredient: JSON.stringify(props.values.ingredientList)
+        }
+
+        console.log(ingredientsObject)
+
+        try {
+
+           let res = await fetch('/api/cookbook-ingredients', {
+               method: 'POST',
+               body: JSON.stringify(ingredientsObject),
+               headers: new Headers({ "Content-Type": "application/json" })
+
+           });
+           let id = await res.json();
+           console.log(id)
+           
+       } catch (e) {
+
+       }
+
+    }
+
+
+    const handleSubmit = () => {
+        handleIngredients(cookbookId);
+        handleDirections(cookbookId);
+        
+        
+    }
+    
 
 
     return (
         <>
-        <Header />
-            <main className="confirmation py-5">
+            <Header />
+            <main className="confirmation">
 
                 <div id="confirmationContainer" className="container my-5 py-5">
 
-                    <div className="row justify-content-center my-5 py-4">
+                    <div className="row justify-content-center my-5">
                         <div>
                             <h2>Confirmation</h2>
+                            <hr />
                         </div>
                     </div>
 
@@ -28,7 +147,7 @@ export default function Confirmation(props) {
 
 
 
-                        <div className="col-lg-6 col-md-12 bg-primary py-4">
+                        <div className="col-lg-6 col-md-12 .hj y-4">
 
 
 
@@ -45,12 +164,13 @@ export default function Confirmation(props) {
 
                         </div>
 
-                        <div className="col-lg-4 col-md-12 bg-success py-4">
+                        <div className="col-lg-4 col-md-12 py-4">
 
 
                             <div className="row justify-content-center py-4">
 
                                 <div className="py-2"> <h2>Tags</h2>
+                                    <hr />
                                     {props.values.tagsList.map(tagitem => <h4><div class="badge badge-secondary badge-pill">{tagitem}</div></h4>)}
                                 </div>
                             </div>
@@ -87,7 +207,7 @@ export default function Confirmation(props) {
 
 
 
-                        <div className="col-lg-6 col-md-12 bg-warning py-4">
+                        <div className="col-lg-6 col-md-12 py-4">
 
                             <div className="row justify-content-center py-4">
 
@@ -113,7 +233,7 @@ export default function Confirmation(props) {
 
                         </div>
 
-                        <div className="col-lg-4 col-md-12 bg-secondary py-4">
+                        <div className="col-lg-4 col-md-12 py-4">
 
 
                             <div className="row justify-content-center py-4">
@@ -140,7 +260,9 @@ export default function Confirmation(props) {
                         <button className="btn btn-danger" onClick={back}>Back</button>
 
 
+                        <button className="btn btn-danger" onClick={handleSubmit}>Submit</button>
                     </div>
+
 
 
                 </div>

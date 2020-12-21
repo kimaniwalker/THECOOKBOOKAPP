@@ -6,7 +6,7 @@ export default function RecipeOfTheWeek(props) {
 
     return (
         <>
-            <main className="featuredRecipe">
+            <main className="featuredRecipe"> 
                 <div className="container pt-4">
                     <div className="row py-4 justify-content-center">
                         <h2>Featured Recipes</h2>
@@ -14,7 +14,9 @@ export default function RecipeOfTheWeek(props) {
                     <div className="row d-flex flex-wrap py-4 justify-content-center">
                         <div className="col-xl-6 col-lg-6 col-md-12 col-sm-12 py-4">
                             <div className="row justify-content-center">
-                              <div><img id="thumbnail" src="../../../../images/assets/featured.jpg" /></div>  
+                              <div><div className="row justify-content-center">
+                                  <img id="thumbnail" src="../../../../images/assets/featured.jpg" />
+                                  </div></div>  
                             </div>
                             
                         </div>

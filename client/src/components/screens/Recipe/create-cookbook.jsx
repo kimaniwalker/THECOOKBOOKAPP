@@ -5,31 +5,28 @@ import Header from '../../header'
 
 export default function CreateCookbook(props) {
 
-
-
-
-
-    const handleSubmit = (e) => {
-        e.preventDefault();
-        console.log('clicked')
-        setCompleted(true);
-
-    }
-
-
     const next = (e) => {
         e.preventDefault();
         props.nextStep();
     };
+    
 
+    const handleUpload = async (e) => {
+        e.preventDefault();
+        let formdata = new FormData();
+        formdata.append("image", props.values.images , props.values.images.name);
 
+        let requestOptions = {
+            method: 'POST',
+            body: formdata,
+            redirect: 'follow'
+        };
 
+        fetch('api/cookbook/image', requestOptions)
+            .then(response => response.text())
+            .then(result => console.log(result))
+            .catch(error => console.log('error', error));
 
-    function handleUpload(event) {
-        setFile(event.target.files[0]);
-
-        // Add code here to upload file to server
-        // ...
     }
 
 
@@ -94,7 +91,7 @@ export default function CreateCookbook(props) {
 
                     <div className="container">
                         <div className="row justify-content-center">
-                            <form onSubmit={handleSubmit}>
+                            <form>
 
                                 <div className="row justify-content-center">
                                     <div id="name">
@@ -139,11 +136,15 @@ export default function CreateCookbook(props) {
 
                                 </div>
 
+                                <div className="row">
+                                    <button onClick={handleUpload} className="btn btn-primary">Add Image</button>
+                                </div>
+
                                 <div className="row justify-content-center">
                                     <div>
                                         <div id="upload-box">
                                             <input type="file" onChange={(e) => props.handleImageChange(e.target.files[0])
-                                                } />
+                                            } />
 
                                         </div>
                                     </div>
@@ -155,23 +156,23 @@ export default function CreateCookbook(props) {
 
                         <div className="container">
                             <div className="row justify-content-center py-4">
-                            {props.values.name.length < 1 || props.values.tags.length < 1 || props.values.servingSize.length < 1 ?
+                                {props.values.name.length < 1 || props.values.tags.length < 1 || props.values.servingSize.length < 1 ?
 
-<div className="container">
-    <div className="row justify-content-center">
+                                    <div className="container">
+                                        <div className="row justify-content-center">
 
-        <span className="warning py-4 text-danger">* Please Fill Out All Form Items To Proceed</span>
+                                            <span className="warning py-4 text-danger">* Please Fill Out All Form Items To Proceed</span>
 
-    </div>
+                                        </div>
 
-</div>
-: null
-}
+                                    </div>
+                                    : null
+                                }
                             </div>
                         </div>
 
 
-                        
+
                         <div className="container py-4">
                             <div className="row justify-content-center">
 
@@ -182,10 +183,10 @@ export default function CreateCookbook(props) {
 
 
                                         <button className="btn" onClick={next}
-                                        disabled={props.values.skillLevel.length < 1
-                                        || props.values.calories.length < 1 || props.values.name.length < 1 ||
-                                    props.values.servingSize.length < 1 || props.values.images.length < 1}
-                                        
+                                            disabled={props.values.skillLevel.length < 1
+                                                || props.values.calories.length < 1 || props.values.name.length < 1 ||
+                                                props.values.servingSize.length < 1 || props.values.images.length < 1}
+
 
                                         ><i className="fas fa-arrow-circle-right fa-2x"></i>
                                         </button>

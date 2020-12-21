@@ -23,6 +23,23 @@ cookbook.all = () => {
 
 };
 
+cookbook.tags = (query) => {
+
+    return new Promise((resolve, reject) => {
+
+        pool.query(`SELECT * FROM cookbook where tags like '%${query}%' `, [query] , (err, results) =>{
+
+            if(err) {
+                return reject(err);
+            }
+
+            return resolve(results);
+        })
+
+    })
+
+};
+
 
 cookbook.one = (id) => {
 
@@ -41,12 +58,12 @@ cookbook.one = (id) => {
     })
 }
 
-cookbook.insert = (id, name , images, tags, serving_size, calories,skill_level, featured) => {
+cookbook.insert = (name , images, tags, serving_size, calories,skill_level, featured) => {
 
 
     return new Promise((resolve, reject) => {
 
-        pool.query(`INSERT INTO cookbook SET ?`, [id, name , images, tags, serving_size, calories,skill_level, featured] ,(err, results) =>{
+        pool.query(`INSERT INTO cookbook SET ?`, [name , images, tags, serving_size, calories,skill_level, featured] ,(err, results) =>{
 
             if(err) {
                 return reject(err);
@@ -91,6 +108,8 @@ cookbook.delete = (id) => {
 
     })
 }
+
+
 
 
 module.exports = cookbook;

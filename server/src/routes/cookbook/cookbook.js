@@ -36,9 +36,23 @@ router.get('/:id', async (req, res, next) => {
 
 });
 
+router.get('/search/:query', async (req, res, next) => {
+
+    try {
+        let results = await cookbook.tags(req.params.query);
+        res.json(results);
+
+    } catch (err) {
+
+        console.log(err);
+        console.log('test');
+        res.sendStatus(500);
+    }
+
+});
+
 router.post('/', async (req, res, next) => {
     let insertObject = {
-        id: req.body.id,
         name: req.body.name,
         images: req.body.images,
         tags: req.body.tags,
@@ -72,6 +86,8 @@ router.post('/', async (req, res, next) => {
 
 router.post('/image', async (req, res, next) => {
     
+
+
     if (!req.files || Object.keys(req.files).length === 0) {
         return res.status(400).send('No files were uploaded.');
       }

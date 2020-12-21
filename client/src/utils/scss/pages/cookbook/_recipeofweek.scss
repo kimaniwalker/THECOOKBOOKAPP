@@ -5,8 +5,8 @@
 .featuredRecipe {
 
     #thumbnail {
-        height: 20vh;
-        width: auto;
+        
+        width: 75%;
         align-items: center;
         justify-content: center;
     }
@@ -30,6 +30,13 @@
         .description {
             padding: 2px 8px 2px;
         }
+
+        #thumbnail {
+            align-items: center;
+            justify-content: center;
+        }
+
+        
         
     }
 }

@@ -2,5 +2,22 @@
 @import "../../typography";
 
 .recipeFilter {
+    background-color: $primary;
+    height: 100%;
+    padding-top: 150px;
+
+
+
+    #searchBar {
+        outline: $dark solid 2px;
+        color: $dark;
+        background-color: transparent;
+        padding: 2px ;
+        width: 60%;
+        
+    }
     
+    .recipe {
+        background-color: $light;
+    }
 }
