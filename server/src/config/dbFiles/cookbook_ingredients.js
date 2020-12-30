@@ -29,7 +29,7 @@ cookbook_ingredients.one = (id) => {
 
     return new Promise((resolve, reject) => {
 
-        pool.query(`SELECT * FROM cookbook_ingredients WHERE id = ?`, [id], (err, results) =>{
+        pool.query(`SELECT * FROM cookbook_ingredients WHERE cookbookId = ?`, [id], (err, results) =>{
 
             if(err) {
                 return reject(err);

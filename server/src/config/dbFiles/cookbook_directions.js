@@ -29,11 +29,12 @@ cookbook_directions.one = (id) => {
 
     return new Promise((resolve, reject) => {
 
-        pool.query(`SELECT * FROM cookbook_directions WHERE id = ?`, [id], (err, results) =>{
+        pool.query(`SELECT * FROM cookbook_directions WHERE cookbookid = ?`, [id], (err, results) =>{
 
             if(err) {
                 return reject(err);
             }
+            console.log(id)
 
             return resolve(results[0]);
         })

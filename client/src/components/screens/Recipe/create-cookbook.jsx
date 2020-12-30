@@ -9,34 +9,6 @@ export default function CreateCookbook(props) {
         e.preventDefault();
         props.nextStep();
     };
-    
-
-    const handleUpload = async (e) => {
-        e.preventDefault();
-        let formdata = new FormData();
-        formdata.append("image", props.values.images , props.values.images.name);
-
-        let requestOptions = {
-            method: 'POST',
-            body: formdata,
-            redirect: 'follow'
-        };
-
-        fetch('api/cookbook/image', requestOptions)
-            .then(response => response.text())
-            .then(result => console.log(result))
-            .catch(error => console.log('error', error));
-
-    }
-
-
-
-
-
-
-
-
-
 
 
     return (
@@ -136,9 +108,6 @@ export default function CreateCookbook(props) {
 
                                 </div>
 
-                                <div className="row">
-                                    <button onClick={handleUpload} className="btn btn-primary">Add Image</button>
-                                </div>
 
                                 <div className="row justify-content-center">
                                     <div>

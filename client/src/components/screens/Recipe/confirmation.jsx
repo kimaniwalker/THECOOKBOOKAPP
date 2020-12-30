@@ -9,6 +9,7 @@ export default function Confirmation(props) {
 
     useEffect(() => {
         handleCookbook();
+        handleUpload();
         
         
       },[]);
@@ -18,6 +19,23 @@ export default function Confirmation(props) {
         e.preventDefault();
         props.prevStep();
     };
+
+    const handleUpload = async (e) => {
+        let formdata = new FormData();
+        formdata.append("image", props.values.images , props.values.images.name);
+
+        let requestOptions = {
+            method: 'POST',
+            body: formdata,
+            redirect: 'follow'
+        };
+
+        fetch('api/cookbook/image', requestOptions)
+            .then(response => response.text())
+            .then(result => console.log(result))
+            .catch(error => console.log('error', error));
+
+    }
 
     const handleCookbook = async(e) => {
 
