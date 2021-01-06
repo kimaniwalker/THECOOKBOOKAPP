@@ -115,7 +115,7 @@ export default function RecipeScreen(props) {
 
     return (
         <>
-            <Header />
+            <Header color={'header-dark'} />
             <main className="recipeScreen">
 
                 <div id="recipeContainer" className="container">
@@ -130,7 +130,7 @@ export default function RecipeScreen(props) {
                                         <i id="utinsils" className="fas fa-utensils fa-2x"></i>
                                     </div>
                                     <div className="row justify-content-center">
-                                        <h6>{cookbook.serving_size}</h6>
+                                        <h6>Servings : {cookbook.serving_size}</h6>
                                     </div>
 
                                 </div>
@@ -139,7 +139,7 @@ export default function RecipeScreen(props) {
                                         <i id="apple" class="fab fa-nutritionix fa-2x"></i>
                                     </div>
                                     <div className="row justify-content-center">
-                                        <h6>{cookbook.calories}</h6>
+                                        <h6>Calories : {cookbook.calories}</h6>
                                     </div>
 
                                 </div>
@@ -148,7 +148,7 @@ export default function RecipeScreen(props) {
                                         <i id="brain" className="fas fa-brain fa-2x"></i>
                                     </div>
                                     <div className="row justify-content-center">
-                                        <h6>{cookbook.skill_level}</h6>
+                                        <h6>Skill Level : {cookbook.skill_level}</h6>
                                     </div>
 
                                 </div>
@@ -162,7 +162,7 @@ export default function RecipeScreen(props) {
                                <div className="row py-3">
                                 <h4>Directions</h4>
                                 <div className="py-2">
-                                    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Doloremque aliquam odio laborum autem distinctio ex assumenda quo vel non iure, voluptas nulla hic dicta vitae accusamus et vero commodi iusto!</p>
+                                
                                     <div>{directions.map((item) =>
 
                                         <p className="py-2">{item}</p>
@@ -230,7 +230,7 @@ export default function RecipeScreen(props) {
 
                             </div>
                             <div className="row justify-content-center">
-                                <p>Submitted By: Future Hendrix</p>
+                                <p>Submitted By: Kountry Cookin</p>
                             </div>
 
                         </div>
@@ -308,7 +308,7 @@ export default function RecipeScreen(props) {
                                 {comments.length >= 1 ? <div className="row justify-content-center py-3">
                                         <button className="btn btn-primary" disabled={currentPage <= 0} onClick={prevPage}>Previous</button>
                                         <button className="btn btn-secondary" disabled={comments.length <= 1} onClick={nextPage}>Next</button>
-                                    </div> : <div className="row justify-content-center py-2"><h4>Be The First To Comment !</h4></div>}
+                                    </div> : <div className="row justify-content-center py-2"><h6>Be The First To Comment !</h6></div>}
 
                                     
                                 </div>

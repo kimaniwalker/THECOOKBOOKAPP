@@ -2,7 +2,8 @@
 @import "../../typography";
 
 .recipeFilter {
-    background-color: $primary;
+    background: url(../../../../../images/home/soulfood-bg.jpg);
+    background-size: contain;
     height: 100%;
     padding-top: 150px;
 
@@ -16,8 +17,29 @@
         width: 60%;
         
     }
+
+    #avatar {
+        vertical-align: middle;
+        width: 100px;
+        height: 100px;
+        border-radius: 50%; 
+        transition: transform .2s;
+    }
+
+    #avatar:hover {
+        transform: scale(1.1);
+        
+    }
     
     .recipe {
         background-color: $light;
     }
+
+    @media only screen and (max-width: 600px) {
+        #thumbnail {
+            width: 200px;
+        }   
+        
+      
+      }
 }

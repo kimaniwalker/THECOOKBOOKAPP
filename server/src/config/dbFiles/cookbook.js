@@ -27,7 +27,7 @@ cookbook.tags = (query) => {
 
     return new Promise((resolve, reject) => {
 
-        pool.query(`SELECT * FROM cookbook where tags like '%${query}%' `, [query] , (err, results) =>{
+        pool.query(`SELECT * FROM cookbook where tags like '%${query}%' order by id desc `, [query] , (err, results) =>{
 
             if(err) {
                 return reject(err);

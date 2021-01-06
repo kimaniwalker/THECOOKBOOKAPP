@@ -1,14 +1,14 @@
 import React from 'react'
 import '../utils/scss/pages/_header.scss';
 
-export default function Header() {
+export default function Header(props) {
     
 
     return (
         <>
          <main className="mainHeader">
-             <header className="header">
-                    <h1 className="logo">KOUNTRY COOKIN</h1>
+             <header className={props.color}>
+                    <h1 className="logo text-light">KOUNTRY COOKIN</h1>
 
                     
                      
@@ -16,21 +16,24 @@ export default function Header() {
 
 
                      <nav className="nav">
-                         <ul>
+                         <div className="row">
+                            <ul>
                              <li>
-                                 <a href="#">Home</a>
+                                 <a href="/">Home</a>
+                             </li>
+                             <li>
+                                 <a href="/createrecipe">Create</a>
+                             </li>
+                             <li>
+                                 <a href="/recipesearch">Recipes</a>
                              </li>
                              <li>
                                  <a href="#">About</a>
                              </li>
-                             <li>
-                                 <a href="#">Recipes</a>
-                             </li>
-                             <li>
-                                 <a href="#">Contact</a>
-                             </li>
                              
-                         </ul>
+                         </ul> 
+                         </div>
+                         
                      </nav>
                      <label htmlFor="nav-toggle" className="nav-toggle-label">
                          <span>

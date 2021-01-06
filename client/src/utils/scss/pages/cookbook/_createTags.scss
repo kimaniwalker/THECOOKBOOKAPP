@@ -2,7 +2,8 @@
 @import "../../typography";
 
 .tags {
-    background: $primary;
+    background: url(../../../../../images/home/soulfood-bg.jpg);
+    background-size: cover;
     height: 100%;
     padding-top: 200px;
     overflow: auto;

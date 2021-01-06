@@ -31,14 +31,13 @@ h2 {
 
 h3 {
     font-family: 'Open Sans Condensed', sans-serif;
-    text-align: center;
+    
     font-weight: 300;
     font-size: 2.5rem;   
 }
 
 h4 {
     font-family: 'Open Sans Condensed', sans-serif;
-    text-align: center;
     font-weight: 300;
     font-size: 2rem;   
 }
@@ -52,7 +51,6 @@ h5 {
 
 h6 {
     font-family: 'Open Sans Condensed', sans-serif;
-    text-align: center;
     font-weight: 300;
     font-size: 1.5rem;   
 }
@@ -71,7 +69,7 @@ a {
 input[type=text]::placeholder {
   font-family: 'Open Sans Condensed', sans-serif;
   font-weight: 300;
-  font-size: 1.5rem;
+  font-size: 1rem;
   color: $dark;
 }
 
@@ -80,37 +78,87 @@ input[type=text] {
         
   max-width: 40vw;
   min-width: 40vw;
-  padding: 15px 0px 15px;
+  padding: 15px 5px 15px;
   margin: 2.5rem 0px 2.5rem;
   border: none;
-  border-bottom: 4px solid $secondary;
+  border-bottom: 4px solid $dark;
+  background-color: transparent;
+  color: $dark;
+  
+  transition: width 1s ease-in-out;
+
+  
+}
+
+textarea[type=text] {
+        
+  max-width: 40vw;
+  min-width: 40vw;
+  padding: 15px 5px 15px;
+  margin: 2.5rem 0px 2.5rem;
+  border: none;
+  border-bottom: 4px solid $dark;
+  background-color: transparent;
+  color: $dark;
+  overflow: hidden; 
+  transition: width 1s ease-in-out;
+
+  
+}
+
+input[type=number] {
+        
+  max-width: 40vw;
+  min-width: 40vw;
+  padding: 15px 5px 15px;
+  margin: 2.5rem 0px 2.5rem;
+  border: none;
+  border-bottom: 4px solid $dark;
+  background-color: transparent;
+  color: $dark;
+  transition: width 1s ease-in-out;
+
+  
+}
+
+select[type=text] {
+        
+  max-width: 40vw;
+  min-width: 40vw;
+  padding: 15px 5px 15px;
+  margin: 2.5rem 0px 2.5rem;
+  border: none;
+  border-bottom: 4px solid $dark;
   background-color: transparent;
   color: $dark;
   text-align: center;
-  
+  transition: width 1s ease-in-out;
 
   
 }
+
+
 
 input[type=text]:focus {
+  border: 3px solid #555;
   
-  
-  
-
   
 }
 
-input[type=text]:hover {
-  
- 
+input[type=text]:hover  {
+  border: 3px solid #555;
+  background-color: $light;
 
   
 }
 
 li {
   font-family: 'Abel', sans-serif;
-  text-align: center;
   font-size: 1.2rem; 
+}
+
+label {
+  display: block;
 }
 
 
@@ -118,13 +166,12 @@ li {
   input[type=text] {
         
     max-width: 40vw;
-    padding: 15px 0px 15px;
+    padding: 15px 5px 15px;
     margin: 2.5rem 0px 2.5rem;
     border: none;
     border-bottom: 4px solid $dark;
     background-color: transparent;
     color: $dark;
-    text-align: center;
     
   
     

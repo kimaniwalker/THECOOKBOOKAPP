@@ -9,6 +9,7 @@ import CheckoutForm from './checkoutForm2';
 import RecipeScreen from './screens/Recipe/recipe-screen';
 import CreateRecipe from './screens/Recipe/create-recipe';
 import RecipeFilter from './screens/Recipe/recipe-filter';
+import Profile from './screens/Recipe/profile';
 
 
 
@@ -25,8 +26,8 @@ class Navigation extends Component {
                         <Route exact path="/createrecipe" component={CreateRecipe} />
                         <Route exact path="/recipesearch" component={RecipeFilter} />
                         <Route exact path="/recipe/:id" component={RecipeScreen} />
-                        <PrivateRoute path="/admin" component={BlogAdmin} />
-
+                        <Route path="/subscribe" component={BlogAdmin} />
+                        <Route path="/profile" component={Profile} />
                         <Route path="/login" component={Login} />
                         <Route path="/logout" component={Logout} />
                         <Route exact path="/payment" component={CheckoutForm} /> 

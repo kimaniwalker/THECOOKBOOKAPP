@@ -23,7 +23,7 @@ export default function CreateIngredients(props) {
 
     return (
         <>
-            <Header />
+            <Header color='header' />
             <main className="ingredients">
 
                 <div id="ingredientsContainer" className="container py-5 my-4">
@@ -110,6 +110,15 @@ export default function CreateIngredients(props) {
                                 <button className="btn continue py-5 mx-3"
                                 disabled={props.values.ingredient.length < 1}
                                 onClick={(e) => props.handleIngredientPush()}><i class="fas fa-plus-circle fa-2x"></i></button>
+                                
+                                
+                            </span>
+                            <span 
+                            >
+                                
+                                <button className="btn continue py-5 mx-3"
+                                disabled={props.values.ingredientList.length < 1}
+                                onClick={(e) => props.handleIngredientRemove()}><i class="fas fa-minus-circle fa-2x"></i></button>
                                 
                                 
                             </span>

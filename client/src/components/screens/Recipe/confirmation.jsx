@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react'
 import Header from '../../header'
-import '../../../utils/scss/pages/cookbook/_confirmation'
+import '../../../utils/scss/pages/cookbook/_recipeScreen'
 import { async } from 'regenerator-runtime';
 
 export default function Confirmation(props) {
@@ -10,11 +10,11 @@ export default function Confirmation(props) {
     useEffect(() => {
         handleCookbook();
         handleUpload();
-        
-        
-      },[]);
-    
-    
+
+
+    }, []);
+
+
     const back = (e) => {
         e.preventDefault();
         props.prevStep();
@@ -22,7 +22,7 @@ export default function Confirmation(props) {
 
     const handleUpload = async (e) => {
         let formdata = new FormData();
-        formdata.append("image", props.values.images , props.values.images.name);
+        formdata.append("image", props.values.images, props.values.images.name);
 
         let requestOptions = {
             method: 'POST',
@@ -37,7 +37,7 @@ export default function Confirmation(props) {
 
     }
 
-    const handleCookbook = async(e) => {
+    const handleCookbook = async (e) => {
 
         let cookbookObject = {
             name: props.values.name,
@@ -48,19 +48,19 @@ export default function Confirmation(props) {
             skill_level: props.values.skillLevel,
             featured: props.values.featured,
             approved: props.values.approved
-    
+
         }
 
-        
+
 
         console.log(cookbookObject)
 
-        
-        
-        
-        
-        
-        
+
+
+
+
+
+
         try {
 
             let res = await fetch('/api/cookbook', {
@@ -72,30 +72,30 @@ export default function Confirmation(props) {
             let id = await res.json();
             console.log(id)
             setCookbookId(id.id);
-            
+
 
             console.log(cookbookId)
         } catch (e) {
             console.log(e);
         }
 
-        
+
 
 
     }
 
-    
 
 
-    const handleDirections = async(cookbookId) => {
-         let directionsObject = {
-             cookbookId: cookbookId,
-             description: JSON.stringify(props.values.directionsList)
-         }
 
-         console.log(directionsObject)
+    const handleDirections = async (cookbookId) => {
+        let directionsObject = {
+            cookbookId: cookbookId,
+            description: JSON.stringify(props.values.directionsList)
+        }
 
-         try {
+        console.log(directionsObject)
+
+        try {
 
             let res = await fetch('/api/cookbook-directions', {
                 method: 'POST',
@@ -104,7 +104,7 @@ export default function Confirmation(props) {
 
             });
             let id = await res.json();
-           
+
             console.log(id)
         } catch (e) {
 
@@ -112,7 +112,7 @@ export default function Confirmation(props) {
 
     }
 
-    const handleIngredients = async(cookbookId) => {
+    const handleIngredients = async (cookbookId) => {
         let ingredientsObject = {
             cookbookId: cookbookId,
             ingredient: JSON.stringify(props.values.ingredientList)
@@ -122,18 +122,18 @@ export default function Confirmation(props) {
 
         try {
 
-           let res = await fetch('/api/cookbook-ingredients', {
-               method: 'POST',
-               body: JSON.stringify(ingredientsObject),
-               headers: new Headers({ "Content-Type": "application/json" })
+            let res = await fetch('/api/cookbook-ingredients', {
+                method: 'POST',
+                body: JSON.stringify(ingredientsObject),
+                headers: new Headers({ "Content-Type": "application/json" })
 
-           });
-           let id = await res.json();
-           console.log(id)
-           
-       } catch (e) {
+            });
+            let id = await res.json();
+            console.log(id)
 
-       }
+        } catch (e) {
+
+        }
 
     }
 
@@ -141,144 +141,143 @@ export default function Confirmation(props) {
     const handleSubmit = () => {
         handleIngredients(cookbookId);
         handleDirections(cookbookId);
-        
-        
+        setTimeout(redirect, 2000);
+
     }
-    
+
+    const redirect = () => {
+
+        window.location.href = "/";
+    }
+
 
 
     return (
         <>
-            <Header />
-            <main className="confirmation">
+            <Header color='header-dark' />
+            <main className="recipeScreen">
 
-                <div id="confirmationContainer" className="container my-5 py-5">
-
-                    <div className="row justify-content-center my-5">
-                        <div>
-                            <h2>Confirmation</h2>
-                            <hr />
-                        </div>
-                    </div>
-
-                    <div className="row justify-content-center">
-
-
-
-                        <div className="col-lg-6 col-md-12 .hj y-4">
-
-
-
-                            <div className="row justify-content-center py-4">
+                <div id="recipeContainer" className="container">
+                    <div className="row d-flex flex-wrap">
+                        <div className="col-lg-8">
+                            <div className="row py-3 justify-content-center bg-danger">
                                 <h2>{props.values.name}</h2>
                             </div>
-                            <div className="row justify-content-center align-items-center py-4">
-                                <img width="400px" src={props.values.images ? URL.createObjectURL(props.values.images) : null}>
-                                </img>
+                            <div className="row py-3 bg-light">
+                                <div className="col-lg-4 col-md-4 col-sm-12">
+                                    <div className="row justify-content-center py-3">
+                                        <i id="utinsils" className="fas fa-utensils fa-2x"></i>
+                                    </div>
+                                    <div className="row justify-content-center">
+                                        <h6>{props.values.servingSize} Servings</h6>
+                                    </div>
 
-                            </div>
-
-
-
-                        </div>
-
-                        <div className="col-lg-4 col-md-12 py-4">
-
-
-                            <div className="row justify-content-center py-4">
-
-                                <div className="py-2"> <h2>Tags</h2>
-                                    <hr />
-                                    {props.values.tagsList.map(tagitem => <h4><div class="badge badge-secondary badge-pill">{tagitem}</div></h4>)}
                                 </div>
+                                <div className="col-lg-4 col-md-4 col-sm-12">
+                                    <div className="row justify-content-center py-3">
+                                        <i id="apple" class="fab fa-nutritionix fa-2x"></i>
+                                    </div>
+                                    <div className="row justify-content-center">
+                                        <h6>{props.values.calories} Calories</h6>
+                                    </div>
+
+                                </div>
+                                <div className="col-lg-4 col-md-4 col-sm-12">
+                                    <div className="row justify-content-center py-3">
+                                        <i id="brain" className="fas fa-brain fa-2x"></i>
+                                    </div>
+                                    <div className="row justify-content-center">
+                                        <h6>Skill Level : {props.values.skillLevel}</h6>
+                                    </div>
+
+                                </div>
+
                             </div>
 
-                            <hr />
-
-                            <div className="row justify-content-center py-2">
-                                <h6>Serving Size : {props.values.servingSize}</h6>
+                            <div className="row py-3">
+                                <hr id="line" />
                             </div>
-                            <div className="row justify-content-center py-2">
-                                <h6>Calories : {props.values.calories}</h6>
-                            </div>
-                            <div className="row justify-content-center py-2">
-                                <h6>Skill Level : {props.values.skillLevel}</h6>
-                            </div>
+                            <div className="container">
+                                <div className="row py-3">
+                                    <h4>Directions</h4>
+                                    <div className="py-2">
+                                        <div>{props.values.directionsList.map((item) =>
 
-
-
-
-                        </div>
-
-
-
-
-
-
-
-
-                    </div>
-
-
-
-                    <div className="row justify-content-center">
-
-
-
-                        <div className="col-lg-6 col-md-12 py-4">
-
-                            <div className="row justify-content-center py-4">
-
-                                <div> <h2>Instructions</h2>
-                                    <div>
-                                        <ol className="">{props.values.directionsList.map(instructionitem =>
-
-
-
-                                            <li className="py-2" key={instructionitem}><h6>{instructionitem}</h6></li>
+                                            <p className="py-2">{item}</p>
 
                                         )}
-                                        </ol>
+                                        </div>
+                                    </div>
+                                </div>
 
+
+                                <div className="row py-3">
+                                    <h4>Images</h4>
+                                </div>
+
+
+
+                                <div className="row py-3">
+                                    <img width='40%' data-toggle="modal" data-target="#exampleModal" src={props.values.images ? URL.createObjectURL(props.values.images) : null}></img>
+
+
+
+
+                                    <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                                        <div class="modal-dialog  modal-lg modal-dialog-centered" role="document">
+                                            <div class="modal-content">
+                                                <div class="modal-header">
+                                                    <h5 class="modal-title" id="exampleModalLabel">{props.values.name}</h5>
+                                                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                                        <span aria-hidden="true">&times;</span>
+                                                    </button>
+                                                </div>
+                                                <div class="modal-body">
+                                                    <img width='100%' data-toggle="modal" data-target="#exampleModal" src={props.values.images ? URL.createObjectURL(props.values.images) : null}></img>
+                                                </div>
+                                                <div class="modal-footer">
+                                                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                                                    <button type="button" class="btn btn-primary disabled">Next</button>
+                                                </div>
+                                            </div>
+                                        </div>
                                     </div>
 
 
 
-
                                 </div>
                             </div>
 
 
+
+
                         </div>
-
-                        <div className="col-lg-4 col-md-12 py-4">
-
-
+                        <div className="col-lg-4 bg-light">
+                            <div className="row justify-content-center py-4">
+                                <h2>Ingredients</h2>
+                            </div>
                             <div className="row justify-content-center py-4">
 
-                                <div> <h2>Ingredients</h2>
-                                    {props.values.ingredientList.map(ingredientitem => <h6><div class="py-2">{ingredientitem}</div></h6>)}
+                                <div>{props.values.ingredientList.map((item) =>
+
+                                    <div className="py-2">{item}</div>
+
+                                )}
                                 </div>
+
+
+                            </div>
+                            <div className="row justify-content-center">
+                                <p>Submitted By: Future Hendrix</p>
                             </div>
 
-
-
                         </div>
-
-
-
-
-
-
-
-
                     </div>
-
-                    <div className="row justify-content-center">
+                    <div className="row justify-content-center py-2">
                         <button className="btn btn-danger" onClick={back}>Back</button>
 
 
-                        <button className="btn btn-danger" onClick={handleSubmit}>Submit</button>
+                        <button className="btn btn-success" onClick={handleSubmit}>Submit</button>
                     </div>
 
 
@@ -286,12 +285,7 @@ export default function Confirmation(props) {
                 </div>
 
 
-
-
-
             </main>
-
-
         </>
     )
 }

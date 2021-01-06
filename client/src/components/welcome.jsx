@@ -1,6 +1,7 @@
 import React, { Component, Fragment } from 'react';
 import '../utils/scss/pages/_welcome.scss';
 import Banner from './banner';
+import Footer from './footer';
 import Header from './header';
 import OurMenu from './ourMenu';
 import CreateCookbook from './screens/Recipe/create-cookbook';
@@ -15,7 +16,7 @@ export default function Welcome() {
   return (
     <Fragment>
       <main className="home">
-        <Header />
+        <Header color='header' />
         <div className="container-fluid bg">
           
         </div>
@@ -24,6 +25,7 @@ export default function Welcome() {
       <RecipeOfTheWeek />
       <Banner message="Purchase A Copy Of The Kountry Cookin Cookbook"/>
       <OurMenu />
+      <Footer />
 
       
     </Fragment>

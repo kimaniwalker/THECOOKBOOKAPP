@@ -16,7 +16,7 @@ export default function CreateRecipe(props) {
     const [servingSize, setServingSize] = useState('')
     const [calories, setCalories] = useState('')
     const [featured, setFeatured] = useState(false);
-    const [skillLevel, setSkillLevel] = useState('');
+    const [skillLevel, setSkillLevel] = useState('Beginner');
     const [step, setStep] = useState(1);
     const [approved, setApproved] = useState(false);
 
@@ -79,6 +79,11 @@ export default function CreateRecipe(props) {
         setIngredient('');
     }
 
+    const handleIngredientRemove = () => {
+        setIngredientList([])
+        setIngredient('');
+    }
+
     /* Create Directions */
     const handleAddDirections = (direction) => {
         setDirection(direction)
@@ -93,8 +98,18 @@ export default function CreateRecipe(props) {
         setTags('');
     }
 
+    const handleTagsRemove = () => {
+        setTagsList([])
+        setTags('');
+    }
+
     const handleDirectionsPush = (directionItem) => {
         directionsList.push(direction)
+        setDirection('');
+    }
+
+    const handleDirectionsRemove = () => {
+        setDirectionsList([])
         setDirection('');
     }
 
@@ -139,6 +154,7 @@ export default function CreateRecipe(props) {
                 prevStep={prevStep}
                 handleAddIngredient={handleAddIngredient}
                 handleIngredientPush={handleIngredientPush}
+                handleIngredientRemove={handleIngredientRemove}
                 values={values} />);
 
         case 3:
@@ -147,6 +163,7 @@ export default function CreateRecipe(props) {
                 prevStep={prevStep}
                 handleAddDirections={handleAddDirections}
                 handleDirectionsPush={handleDirectionsPush}
+                handleDirectionsRemove={handleDirectionsRemove}
                 values={values} />);
         case 4:
             return (<CreateTags
@@ -154,6 +171,7 @@ export default function CreateRecipe(props) {
                 nextStep={nextStep}
                 handleAddTags={handleAddTags}
                 handleTagsPush={handleTagsPush}
+                handleTagsRemove={handleTagsRemove}
                 values={values} />)
 
         case 5:

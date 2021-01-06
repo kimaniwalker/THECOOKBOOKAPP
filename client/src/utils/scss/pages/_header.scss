@@ -12,14 +12,30 @@
 
 
   .header {
-  background: transparent;
   text-align: center;
   position: fixed;
   width: 100%;
   z-index: 999;
   padding-top: 1.5rem;
   padding-bottom: 1.5rem;
+  background: transparent;
   
+  
+  }
+
+  .header-dark {
+  text-align: center;
+  position: fixed;
+  width: 100%;
+  z-index: 999;
+  padding-top: 1.5rem;
+  padding-bottom: 1.5rem;
+  background: $dark;
+  }
+
+  .header:hover {
+  background: $dark;
+  opacity: .9;
   }
 
   .logo {
@@ -28,7 +44,7 @@
 
   .nav {
     position: absolute;
-    text-align: left;
+    text-align: center;
     top: 100%;
     left: 0;
     background: transparent;
@@ -55,10 +71,12 @@
     text-transform: uppercase;
     opacity: 0;
     transition: 150ms ease-in-out;
+    align-items: center;
+    color: darkseagreen;
   }
 
   nav a:hover {
-    color: $dark;
+    color: $secondary;
   }
 
   
@@ -68,12 +86,23 @@
   }
   .nav-toggle:checked ~ nav {
     transform: scale(1,1);
+    background: $dark;
+    height: 100vh;
+    width: 100vw;
   }
 
   .nav-toggle:checked ~ nav a {
     opacity: 1;
     transition: 250ms ease-in-out 250ms;
+    color: $light;
+    font-size: 2rem;
+    padding-left: 40vw;
+    
+    
+    
   }
+
+  
 
   .nav-toggle-label {
     position: absolute;
@@ -124,7 +153,13 @@
     .header {
       display: grid;
       grid-template-columns:  1fr auto minmax(600px, 3fr) 1fr;
+      
 
+    }
+
+    .header-dark {
+      display: grid;
+      grid-template-columns:  1fr auto minmax(600px, 3fr) 1fr;
     }
 
     .logo {
@@ -138,6 +173,7 @@
       display: flex;
       justify-content: flex-end;
       align-items: center;
+
     }
 
     .nav ul {
@@ -153,13 +189,15 @@
     nav a {
       opacity: 1;
       position: relative;
+      
+      
     }
 
     nav a::before {
       content: '';
       display: block;
       height: 5px;
-      background: $dark;
+      background: $light;
       position: absolute;
       top: -.75em;
       left: 0;

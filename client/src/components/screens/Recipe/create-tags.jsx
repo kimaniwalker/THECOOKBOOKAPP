@@ -22,7 +22,7 @@ export default function CreateTags(props) {
 
     return (
         <>
-            <Header />
+            <Header color='header' />
             <main className="tags">
 
 
@@ -99,6 +99,13 @@ export default function CreateTags(props) {
                             <button className="btn continue py-5 mx-3"
                                 disabled={props.values.tags.length < 1}
                                 onClick={(e) => props.handleTagsPush()}><i class="fas fa-plus-circle fa-2x"></i></button>
+
+                        </span>
+                        <span
+                        >
+                            <button className="btn continue py-5 mx-3"
+                                disabled={props.values.tagsList.length < 1}
+                                onClick={(e) => props.handleTagsRemove()}><i class="fas fa-minus-circle fa-2x"></i></button>
 
                         </span>
                         <span >

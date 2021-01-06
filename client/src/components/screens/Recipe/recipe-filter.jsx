@@ -1,12 +1,14 @@
-import React, { useState } from 'react'
+import React, { useState, useEffect } from 'react'
 import '../../../utils/scss/pages/cookbook/_recipeFilter'
 import Banner from '../../banner';
 import Header from '../../header';
 
 export default function RecipeFilter(props) {
 
-    const [query, setQuery] = useState('');
+    const [query, setQuery] = useState('Breakfast');
     const [results, setResults] = useState([]);
+    const [currentPage, setCurrentPage] = useState(0);
+    const [resultsPerPage, setResultsPerPage] = useState(3);
 
     const handleSubmit = async () => {
 
@@ -19,19 +21,40 @@ export default function RecipeFilter(props) {
             });
             let searchList = await res.json();
             console.log(searchList)
-            setResults(searchList);
+            setResults(searchList.slice(currentPage, resultsPerPage));
         } catch (e) {
             console.log(e)
         }
     }
 
+    useEffect(() => {
+        handleSubmit();
+    }, [currentPage]);
+
+    /* Helper Functions */
+    const nextPage = () => {
+        setCurrentPage(currentPage + 3);
+        setResultsPerPage(resultsPerPage + 3)
+
+
+    };
+
+    const prevPage = () => {
+        setCurrentPage(currentPage - 3);
+        setResultsPerPage(resultsPerPage - 3)
+
+    };
+
 
     return (
         <>
-            <Header />
+            <Header color='header' />
             <main className="recipeFilter">
 
-                <div className="container recipe">
+                <div className="container recipe py-4">
+                    <div className="row py-4 justify-content-center">
+                        <i class="fas fa-search fa-2x"></i>
+                    </div>
                     <div className="row py-4 justify-content-center">
                         <h2>Browse Our Recipes</h2>
                     </div>
@@ -47,95 +70,153 @@ export default function RecipeFilter(props) {
                         </div>
                     </div>
 
+                    <div className="row py-4 bg-light">
+                        <div className="container">
 
-                    <div className="row py-4">
-                        <div className="col-xl-4 col-lg-4 col-md-4 col-sm-12">
-                            <ul>
-                                <li onClick={(e) => setQuery('Breakfast')}>
-                                    Breakfast
-                        </li>
-                                <li>
-                                    Lunch
-                        </li>
-                                <li>
-                                    Dinner
-                        </li>
-                                <li>
-                                    Desert
-                        </li>
-                            </ul>
-                        </div>
-
-                        <div className="col-xl-4 col-lg-4 col-md-4">
-                            <ul>
-                                <li>
-                                    Breakfast
-                        </li>
-                                <li>
-                                    Lunch
-                        </li>
-                                <li>
-                                    Dinner
-                        </li>
-                                <li>
-                                    Desert
-                        </li>
-                            </ul>
-                        </div>
-                        <div className="col-xl-4 col-lg-4 col-md-4">
-                            <ul>
-                                <li>
-                                    Breakfast
-                        </li>
-                                <li>
-                                    Lunch
-                        </li>
-                                <li>
-                                    Dinner
-                        </li>
-                                <li>
-                                    Desert
-                        </li>
-                            </ul>
+                            <h4>Quick Search</h4>
+                            <hr />
                         </div>
 
                     </div>
 
-                    <div className="row justify-content-center py-4">
+                    <div className="row py-4 bg-light justify-content-center text-center">
+
+
+
+                        <div className="col-xl-4 col-lg-4 col-md-4 col-sm-12">
+
+
+                            <div className="row justify-content-center py-2">
+                               <span onClick={(e) => setQuery('Breakfast')}><img id="avatar" src='../../../images/home/pancakes.jpg'></img></span>
+                               
+                               
+                    
+                            </div>
+
+
+                            <div className="row justify-content-center py-2">
+                                <h5>Breakfast</h5>
+                            </div>
+
+
+
+
+                        </div>
+
+
+
+                        <div className="col-xl-4 col-lg-4 col-md-4">
+                        <div className="row justify-content-center py-2">
+                               <span onClick={(e) => setQuery('Drinks')}><img id="avatar" src='../../../images/home/drinks.jpg'></img></span>
+                               
+                               
+                    
+                            </div>
+
+
+                            <div className="row justify-content-center py-2">
+                                <h5>Drinks</h5>
+                            </div>
+                        </div>
+                        <div className="col-xl-4 col-lg-4 col-md-4">
+                        <div className="row justify-content-center py-2">
+                               <span onClick={(e) => setQuery('Dinner')}><img id="avatar" src='../../../images/home/steak.jpg'></img></span>
+                               
+                               
+                    
+                            </div>
+
+
+                            <div className="row justify-content-center py-2">
+                                <h5>Dinner</h5>
+                            </div>
+                        </div>
+
+                    </div>
+
+                    <div className="row py-4">
                         {results.length >= 1 ?
                             <div className="container">
-                                <hr />
-                                <div className="row">
-                                    <h3>Search Results</h3>
+
+                                <div className="row justify-content-space-between">
+                                    <div className="container">
+                                        <span><h3>Search Results</h3></span>
+                                        <span><h6 className="text-warning">Showing Result {currentPage} - {resultsPerPage}</h6></span>
+
+
+                                    </div>
+
 
                                 </div>
+                                <hr />
+                                <div className="row justify-content-space-between d-flex">
 
-                                <div className="row">
-                                    <div>
+
+                                    <div className="col-lg-12">
+
                                         <ol className="">{results.map(resultitem =>
 
 
 
-                                            <li className="py-2" key={resultitem.id}><h6>{resultitem.name}</h6></li>
+
+
+
+
+                                            <li className="p-2" key={resultitem.id}><div><h6>{resultitem.name}
+
+                                            </h6></div>
+                                                <div className="py-2">Servings : {resultitem.serving_size}  Calories : {resultitem.calories} </div>
+                                                <div className="py-2">
+                                                    <img id="thumbnail" width="400px" src={`../../../../images/assets/${resultitem.images}`} alt="" />
+                                                </div>
+
+
+                                                <div><button onClick={(e) => window.location.href = `/recipe/${resultitem.id}`} className="btn btn-primary">View Recipe</button></div>
+
+
+                                                <hr />
+
+
+                                            </li>
+
+
+
+
+
 
                                         )}
                                         </ol>
+                                        <div className="row justify-content-center">
+                                            <button className="btn btn-primary" disabled={currentPage <= 0} onClick={prevPage}>Previous</button>
+                                            <button className="btn btn-secondary" disabled={results.length <= 1} onClick={nextPage}>Next</button>
+                                        </div>
 
                                     </div>
+
+
+
+
+
                                 </div>
 
 
                             </div>
 
-                            : <div className="container">
+                            : <div className="container py-4">
 
                                 <hr />
                                 <div className="row">
-                                    <h3>Search Results</h3>
+                                    <div className="container">
+                                        <h3>Search Results</h3>
+                                    </div>
+
 
                                 </div>
                                 <div className="row">
-                                    <p className="text-warning">No Items Found</p>
+                                    <div className="container">
+                                        <p className="text-warning">No Items Found</p>
+                                    </div>
+
                                 </div>
 
                             </div>}

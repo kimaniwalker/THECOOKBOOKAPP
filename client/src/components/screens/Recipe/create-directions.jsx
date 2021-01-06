@@ -26,7 +26,7 @@ export default function CreateDirections(props) {
 
     return (
         <>
-            <Header />
+            <Header color='header' />
             <main className="directions">
 
 
@@ -82,7 +82,7 @@ export default function CreateDirections(props) {
                     <div className="row justify-content-center">
                         <div className="form-group">
 
-                            <input type="text" className="" name="github" onChange={handleDirection}
+                            <textarea type="text" className="" name="github" onChange={handleDirection}
                                 value={props.values.direction}
                                 placeholder="Add Directions" />
 
@@ -105,6 +105,14 @@ export default function CreateDirections(props) {
                                 <button className="btn continue py-5 mx-3"
                                     disabled={props.values.direction.length < 1}
                                     onClick={(e) => props.handleDirectionsPush()}><i className="fas fa-plus-circle fa-2x"></i></button>
+
+
+                            </span>
+                            <span
+                            >
+                                <button className="btn continue py-5 mx-3"
+                                    disabled={props.values.directionsList.length < 1}
+                                    onClick={(e) => props.handleDirectionsRemove()}><i className="fas fa-minus-circle fa-2x"></i></button>
 
 
                             </span>

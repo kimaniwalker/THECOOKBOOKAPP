@@ -22,13 +22,13 @@ export default function RecipeOfTheWeek(props) {
                         </div>
                         <div className="col-xl-6 col-lg-6 col-md-12 col-sm-12 py-4">
                             <div id="centerSm" className="row py-4">
-                                <div><h4>Item Name</h4></div>
+                                <div><h4>Kountry Cookin Chicken & Waffles</h4></div>
                             </div>
                             <div id="centerSm" className="row description">
                                 <div><p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Quibusdam eligendi voluptate totam et ducimus iusto non, doloremque quasi dolorum, reiciendis praesentium cumque saepe expedita possimus fugiat ipsum cupiditate pariatur? Voluptas.</p></div>
                             </div>
                             <div id="centerSm" className="row">
-                                <div><p>Submitted by: Author</p></div>
+                                <div><p>Submitted by: Kountry Cookin</p></div>
                             </div>
                             <div id="centerSm" className="row pt-4">
                                 <div>

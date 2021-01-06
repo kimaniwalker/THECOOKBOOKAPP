@@ -4,7 +4,8 @@
 
 .cookbook { 
     
-    background: $secondary;
+    background: url(../../../../../images/home/soulfood-bg.jpg);
+    background-size: contain;
     height: 100%;
     padding-top: 200px;
     overflow: auto;
@@ -26,7 +27,6 @@
         padding: 40px 0px 40px;
         box-shadow: 2px 2px $dark;
         background: whitesmoke;
-        transition: cubic-bezier(0.175, 0.885, 0.32, 1.275);
         
     }
 

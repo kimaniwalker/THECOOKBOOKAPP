@@ -13,7 +13,7 @@ export default function CreateCookbook(props) {
 
     return (
         <>
-            <Header />
+            <Header color='header' />
             <main className="cookbook">
                 <div id="cookbookcontainer" className="container mb-5">
                     <div className="row py-4 justify-content-center py-4">
@@ -67,9 +67,12 @@ export default function CreateCookbook(props) {
 
                                 <div className="row justify-content-center">
                                     <div id="name">
-
+                                        
+                                          <label htmlFor="RecipeName">Recipe Name</label>  
+                                        
+                                        
                                         <input id="name" type="text"
-                                            placeholder={'Recipe Name'}
+
                                             onChange={(e) => props.handleNameChange(e.target.value)}
                                             value={props.values.name}
                                             className="input-group-lg"
@@ -81,29 +84,35 @@ export default function CreateCookbook(props) {
 
                                 <div className="row justify-content-center">
                                     <div>
+                                        <label htmlFor="ServingSize">Serving Size</label>
+                                        <input id="servingSize" type="number"
 
-                                        <input id="servingSize" type="text"
-                                            placeholder={'Serving Size'}
                                             onChange={(e) => props.handleServingSizeChange(e.target.value)}
                                             value={props.values.servingSize} />
                                     </div>
                                 </div>
                                 <div className="row justify-content-center">
                                     <div>
+                                        <label htmlFor="Calories">Calories</label>
+                                        <input id="calories" type="number"
 
-                                        <input id="calories" type="text"
-                                            placeholder={'Calories'}
                                             onChange={(e) => props.handleCaloriesChange(e.target.value)}
                                             value={props.values.calories} />
                                     </div>
                                 </div>
                                 <div className="row justify-content-center">
                                     <div>
+                                        <label htmlFor="SkillLevel">Skill Level</label>
+                                        <select onChange={(e) => props.handleSkillChange(e.target.value)}
+                                            value={props.values.skillLevel} id="skillLevel" type="text">
 
-                                        <input id="skillLevel" type="text"
-                                            placeholder={'Skill Level'}
-                                            onChange={(e) => props.handleSkillChange(e.target.value)}
-                                            value={props.values.skillLevel} />
+                                            <option value="Beginner">Beginner</option>
+                                            <option value="Intermediate">Intermediate</option>
+                                            <option value="Very Difficult">Expert</option>
+
+
+                                        </select>
+
                                     </div>
 
                                 </div>
