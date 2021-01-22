@@ -22,13 +22,10 @@ export default function Header(props) {
                                  <a href="/">Home</a>
                              </li>
                              <li>
-                                 <a href="/createrecipe">Create</a>
-                             </li>
-                             <li>
                                  <a href="/recipesearch">Recipes</a>
                              </li>
                              <li>
-                                 <a href="#">About</a>
+                                 <a href="/profile">My Account</a>
                              </li>
                              
                          </ul> 

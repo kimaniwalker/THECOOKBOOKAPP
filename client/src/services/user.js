@@ -23,6 +23,16 @@ async function checkLogin() {
   }
 }
 
+async function getUser() {
+  if (loggedIn) {
+    let user = await me();
+    console.log(user);
+      return user
+  } else {
+    return 'User Not Logged In'
+  }
+}
+
 async function login(email, password) {
   
   let response = await baseService.makeFetch("/api/auth/login", {
@@ -57,4 +67,4 @@ async function me() {
   return await baseService.get("/api/users/me");
 }
 
-export { isLoggedIn, checkLogin, login, logout, me, googleLogin };
+export { isLoggedIn, checkLogin, getUser, login, logout, me, googleLogin };

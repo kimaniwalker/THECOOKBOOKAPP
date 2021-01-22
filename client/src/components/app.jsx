@@ -10,6 +10,8 @@ import RecipeScreen from './screens/Recipe/recipe-screen';
 import CreateRecipe from './screens/Recipe/create-recipe';
 import RecipeFilter from './screens/Recipe/recipe-filter';
 import Profile from './screens/Recipe/profile';
+import Subscription from './subscription';
+import Register from './auth/register';
 
 
 
@@ -26,11 +28,14 @@ class Navigation extends Component {
                         <Route exact path="/createrecipe" component={CreateRecipe} />
                         <Route exact path="/recipesearch" component={RecipeFilter} />
                         <Route exact path="/recipe/:id" component={RecipeScreen} />
-                        <Route path="/subscribe" component={BlogAdmin} />
-                        <Route path="/profile" component={Profile} />
-                        <Route path="/login" component={Login} />
-                        <Route path="/logout" component={Logout} />
-                        <Route exact path="/payment" component={CheckoutForm} /> 
+                        <Route exact path="/subscribe" component={BlogAdmin} />
+                        <PrivateRoute exact path="/profile" component={Profile} />
+                        <Route exact path="/login" component={Login} />
+                        <Route exact path="/logout" component={Logout} />
+                        <Route exact path="/payment" component={CheckoutForm} />
+                        <Route exact path="/subscription-signup" component={Subscription} />
+                        <Route exact path="/register" component={Register} />
+
                         
 
                     </Switch>

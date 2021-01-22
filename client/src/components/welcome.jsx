@@ -23,7 +23,7 @@ export default function Welcome() {
 
       </main>
       <RecipeOfTheWeek />
-      <Banner message="Purchase A Copy Of The Kountry Cookin Cookbook"/>
+      <Banner message="Subscribe For Access To Our Recipes"/>
       <OurMenu />
       <Footer />
 

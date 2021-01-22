@@ -1,0 +1,29 @@
+@import "../../variables";
+@import "../../typography";
+
+.subscription {
+    width: 100%;
+    padding-top: 23vh;
+    padding-bottom: 15vh;
+
+    .active {
+        outline: 2px solid $primary;
+    }
+
+    #title {
+        padding-top: 1rem;
+        padding-bottom: 1rem;
+    }
+
+    #cardBody {
+        padding-top: 2rem;
+        padding-bottom: 2rem;
+    
+    }
+
+    
+
+    
+
+    
+}

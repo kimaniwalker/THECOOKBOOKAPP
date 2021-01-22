@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react'
 
 import '../../../utils/scss/pages/cookbook/_recipeScreen'
 import Header from '../../header';
+import Footer from '../../footer';
 import useReactRouter from 'use-react-router';
 
 
@@ -89,6 +90,33 @@ export default function RecipeScreen(props) {
             setDirections(JSON.parse(data.description));
 
 
+
+        } catch (e) {
+            console.log(e)
+        }
+    }
+    const leaveComment = async (e) => {
+        
+        let commentObject = {
+            comment: comment,
+            cookbookId: match.params.id,
+            user: 'Kountry Cookin'
+        }
+
+        console.log(commentObject)
+        
+        try {
+
+            let res = await fetch('/api/cookbook-comments' , {
+                method: 'POST',
+                body: JSON.stringify(commentObject),
+                headers: new Headers({ "Content-Type": "application/json" })
+
+            });
+            let data = await res.json();
+            console.log(data)
+            setComment('');
+           
 
         } catch (e) {
             console.log(e)
@@ -237,7 +265,7 @@ export default function RecipeScreen(props) {
                     </div>
 
                     <div className="row py-3 d-flex flex-wrap">
-                        <div className="col-lg-8 col-md-8 col-sm-9">
+                        <div className="col-lg-8 col-md-8 col-sm-12 col-xs-12">
                             <hr id='commentline' />
                             <h5>Leave A Comment</h5>
                             <hr id='commentline' />
@@ -246,14 +274,14 @@ export default function RecipeScreen(props) {
                     </div>
 
                     <div className="row py-3">
-                        <div className="col-lg-8 col-md-8 col-sm-8">
+                        <div className="col-lg-8 col-md-8 col-sm-12 col-xs-12">
 
 
                             <div className="container">
                               <div className="row py-2">
                                 <div className="input-group p-4 bg-light">
                                 <div className="input-group-prepend">
-                                    <span className="input-group-text">Submit</span>
+                                    <span onClick={(e) => leaveComment()} className="input-group-text">Submit</span>
                                 </div>
                                 <textarea onChange={(e) => setComment(e.target.value)}
                                     value={comment}
@@ -270,7 +298,7 @@ export default function RecipeScreen(props) {
 
 
 <div className="row p-4">
-                                <div className="col-lg-12 col-md-12 col-2m-12">
+                                <div className="col-lg-12 col-md-12 col-sm-12 col-xs-12">
                                     <div className="row py-3">
                                         <div>{comments.map((item) =>
 
@@ -337,6 +365,7 @@ export default function RecipeScreen(props) {
 
 
             </main>
+            <Footer />
         </>
     )
 }

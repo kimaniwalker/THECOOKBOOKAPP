@@ -1,50 +1,52 @@
 import { Router } from 'express';
 import { tokenMiddleware, isLoggedIn } from '../middleware/auth.mw';
 import { generateHash } from "../utils/security";
-import Table from "../table";
+const db = require('../config/dbFiles/users');
+const fileUpload = require('express-fileupload');
+import { join } from 'path';
 
 
 let router = Router();
-let userTable = new Table("users");
+router.use(fileUpload());
 
 
 
 router.get('/me', tokenMiddleware, isLoggedIn, async (req, res) => {
-  
+
   try {
-  console.log(req.user);  
+    console.log(req.user);
     res.json(req.user);
-  } catch(err) {
+  } catch (err) {
 
     console.log(err);
     res.sendStatus(500);
   }
-  
-    
+
+
 });
 
 
 router.get('/', async (req, res) => {
   try {
-userTable.getAll()
+    db.all()
       .then(users => {
-          res.json(users);
+        res.json(users);
       })
-  } catch(err) {
+  } catch (err) {
     console.log(err);
     res.sendStatus(500);
   }
-  
+
 });
 
 router.get('/:id', async (req, res) => {
   try {
-   
-      let foundClass = await userTable.getOne(req.params.id);
-      res.json(foundClass);
+
+    let foundClass = await db.one(req.params.id);
+    res.json(foundClass);
   } catch (err) {
-      console.log(err);
-      res.sendStatus(500);
+    console.log(err);
+    res.sendStatus(500);
   }
 });
 
@@ -55,32 +57,124 @@ router.get('/:id', async (req, res) => {
  * in the request's body
  */
 router.post("/", async (req, res) => {
-  
-  
+
+
   try {
 
-      let hash = await generateHash(req.body.password);
-      let insertObject = {
-        email: req.body.email,
-        hash,
-        first_name: req.body.first_name,
-        last_name: req.body.last_name,
-        profile_picture_link: req.body.profile_picture_link
-        
-      };
+    let hash = await generateHash(req.body.password);
+    let insertObject = {
+      email: req.body.email,
+      hash,
+      first_name: req.body.first_name,
+      last_name: req.body.last_name,
+      profile_picture_link: req.body.profile_picture_link,
+      phone: req.body.phone,
+      city: req.body.city,
+      state: req.body.state,
+      customer_id: req.body.customer_id,
+      address: req.body.address,
+      zipcode: req.body.zipcode,
+      subscription_start: req.body.subscription_start,
+      subscription_end: req.body.subscription_end,
+      subscription_id: req.body.subscription_id
 
-      logger.info('Request Object' +  JSON.stringify(insertObject));
-      let idObj = await userTable.insert(insertObject);
-      res.status(201).json(idObj);
-      
-    } catch (err) {
-      logger.error(`${err.status || 500} - ${err.message} - ${req.originalUrl} - ${req.method} - ${req.ip} - `);
-      console.log('Error' + err);
-      if (err.errno === 1062) {
-        res.status(500).send("Emails have to be unique!");
-      } else res.status(500).send(err);
-      
+    };
+
+    console.log(insertObject)
+    let idObj = await db.insert(insertObject);
+    res.status(201).json(idObj);
+
+  } catch (err) {
+    console.log('Error' + err);
+    if (err.errno === 1062) {
+      res.status(500).send("Emails have to be unique!");
+    } else res.status(500).send(err);
+
+  }
+
+});
+
+router.put("/", async (req, res) => {
+
+
+  try {
+
+    let hash = await generateHash(req.body.password);
+    let insertObject = {
+      email: req.body.email,
+      hash,
+      first_name: req.body.first_name,
+      last_name: req.body.last_name,
+      profile_picture_link: req.body.profile_picture_link,
+      phone: req.body.phone,
+      city: req.body.city,
+      state: req.body.state,
+      customer_id: req.body.customer_id,
+      address: req.body.address,
+      zipcode: req.body.zipcode,
+      subscription_start: req.body.subscription_start,
+      subscription_end: req.body.subscription_end,
+      subscription_id: req.body.subscription_id
+
+    };
+
+    console.log(insertObject)
+    let idObj = await db.update(insertObject);
+    res.status(201).json(idObj);
+
+  } catch (err) {
+    console.log('Error' + err);
+    if (err.errno === 1062) {
+      res.status(500).send("Emails have to be unique!");
+    } else res.status(500).send(err);
+
+  }
+
+});
+
+router.post('/image', async (req, res, next) => {
+    
+
+
+  if (!req.files || Object.keys(req.files).length === 0) {
+      return res.status(400).send('No files were uploaded.');
     }
-  });
+  
+  let insertObject = req.files.image
+
+  const ASSETS_PATH = join(__dirname, `../../../../client/images/profile/${req.files.image.name}`);
+
+  console.log(insertObject);
+  console.log(ASSETS_PATH);
+
+
+  
+
+  insertObject.mv(ASSETS_PATH, function(err) {
+      if (err)
+        return res.status(500).send(err);
+  
+      res.send('File uploaded!');
+    });
+});
+
+router.delete('/', async (req, res, next) => {
+
+  try {
+      let results = await db.delete(req.params.id);
+      res.json(results);
+
+  } catch (err) {
+
+      console.log(err);
+      console.log('test');
+      res.sendStatus(500);
+  }
+
+});
+
+
+
+
 
 export default router;

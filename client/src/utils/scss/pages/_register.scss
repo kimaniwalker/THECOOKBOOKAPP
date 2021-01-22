@@ -1,0 +1,36 @@
+@import "../variables";
+@import "../typography";
+
+.register {
+    
+    width: 100%;
+    padding-top: 20vh;
+    padding-bottom: 20vh;
+    
+
+
+    .textbox {
+        width: 75%;
+        border-radius: 0.4rem;
+        padding: 10px 0px 10px;
+    }
+
+    .textbox:focus {
+        outline: none;
+        box-shadow: 0.2rem 0.6rem 1rem $dark
+      }
+
+    .userBtn {
+        width: 75%;
+    }
+
+    @media screen and (max-width: 400px) {
+        .textbox {
+            width: 100%;
+            border-radius: 0.4rem;
+            padding: 10px 0px 10px;
+        }
+
+        
+    }
+}

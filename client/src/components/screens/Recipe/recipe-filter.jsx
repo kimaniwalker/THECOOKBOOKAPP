@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react'
 import '../../../utils/scss/pages/cookbook/_recipeFilter'
 import Banner from '../../banner';
+import Footer from '../../footer';
 import Header from '../../header';
 
 export default function RecipeFilter(props) {
@@ -53,7 +54,7 @@ export default function RecipeFilter(props) {
 
                 <div className="container recipe py-4">
                     <div className="row py-4 justify-content-center">
-                        <i class="fas fa-search fa-2x"></i>
+                        <i className="fas fa-search fa-2x"></i>
                     </div>
                     <div className="row py-4 justify-content-center">
                         <h2>Browse Our Recipes</h2>
@@ -62,8 +63,8 @@ export default function RecipeFilter(props) {
                         <div id="searchBar" className="input-group mb-3">
                             <input className="form-control" placeholder="Search Recipes Ex. Breakfast, Lunch, Dinner"
                                 value={query}
-                                aria-label="Recipient's username" onChange={(e) => setQuery(e.target.value)} aria-describedby="basic-addon2" />
-                            <div class="input-group-append">
+                                aria-label="Search Bar" onChange={(e) => setQuery(e.target.value)} aria-describedby="basic-addon2" />
+                            <div className="input-group-append">
                                 <button className="btn btn-outline-secondary" type="button"
                                     onClick={handleSubmit}>Search</button>
                             </div>
@@ -73,7 +74,7 @@ export default function RecipeFilter(props) {
                     <div className="row py-4 bg-light">
                         <div className="container">
 
-                            <h4>Quick Search</h4>
+                            <h5 className="text-center">Quick Search</h5>
                             <hr />
                         </div>
 
@@ -87,10 +88,10 @@ export default function RecipeFilter(props) {
 
 
                             <div className="row justify-content-center py-2">
-                               <span onClick={(e) => setQuery('Breakfast')}><img id="avatar" src='../../../images/home/pancakes.jpg'></img></span>
-                               
-                               
-                    
+                                <span onClick={(e) => setQuery('Breakfast')}><img id="avatar" src='../../../images/home/pancakes.jpg'></img></span>
+
+
+
                             </div>
 
 
@@ -106,11 +107,11 @@ export default function RecipeFilter(props) {
 
 
                         <div className="col-xl-4 col-lg-4 col-md-4">
-                        <div className="row justify-content-center py-2">
-                               <span onClick={(e) => setQuery('Drinks')}><img id="avatar" src='../../../images/home/drinks.jpg'></img></span>
-                               
-                               
-                    
+                            <div className="row justify-content-center py-2">
+                                <span onClick={(e) => setQuery('Drinks')}><img id="avatar" src='../../../images/home/drinks.jpg'></img></span>
+
+
+
                             </div>
 
 
@@ -119,11 +120,11 @@ export default function RecipeFilter(props) {
                             </div>
                         </div>
                         <div className="col-xl-4 col-lg-4 col-md-4">
-                        <div className="row justify-content-center py-2">
-                               <span onClick={(e) => setQuery('Dinner')}><img id="avatar" src='../../../images/home/steak.jpg'></img></span>
-                               
-                               
-                    
+                            <div className="row justify-content-center py-2">
+                                <span onClick={(e) => setQuery('Dinner')}><img id="avatar" src='../../../images/home/steak.jpg'></img></span>
+
+
+
                             </div>
 
 
@@ -140,8 +141,8 @@ export default function RecipeFilter(props) {
 
                                 <div className="row justify-content-space-between">
                                     <div className="container">
-                                        <span><h3>Search Results</h3></span>
-                                        <span><h6 className="text-warning">Showing Result {currentPage} - {resultsPerPage}</h6></span>
+                                        <span><h3 className="text-center">Search Results</h3></span>
+                                        <span><h6 className="text-warning text-center">Showing Result {currentPage} - {resultsPerPage}</h6></span>
 
 
                                     </div>
@@ -150,46 +151,50 @@ export default function RecipeFilter(props) {
                                 </div>
                                 <hr />
                                 <div className="row justify-content-space-between d-flex">
-
-
                                     <div className="col-lg-12">
+                                        <div className="container">
 
-                                        <ol className="">{results.map(resultitem =>
-
-
-
+                                            <div className="">{results.map(resultitem =>
 
 
 
 
-                                            <li className="p-2" key={resultitem.id}><div><h6>{resultitem.name}
 
-                                            </h6></div>
-                                                <div className="py-2">Servings : {resultitem.serving_size}  Calories : {resultitem.calories} </div>
-                                                <div className="py-2">
-                                                    <img id="thumbnail" width="400px" src={`../../../../images/assets/${resultitem.images}`} alt="" />
+
+
+                                                <div className="p-2 text-center" key={resultitem.id}><div><h6>{resultitem.name}
+
+                                                </h6></div>
+                                                    <div className="py-2 text-center">Servings : {resultitem.serving_size}  Calories : {resultitem.calories} </div>
+                                                    <div className="py-2 text-center">
+                                                        <img id="thumbnail" width="400px" src={`../../../../images/assets/${resultitem.images}`} alt="" />
+                                                    </div>
+
+
+                                                    <div><button onClick={(e) => window.location.href = `/recipe/${resultitem.id}`} className="btn btn-primary text-center">View Recipe</button></div>
+
+
+                                                    <hr />
+
+
                                                 </div>
 
 
-                                                <div><button onClick={(e) => window.location.href = `/recipe/${resultitem.id}`} className="btn btn-primary">View Recipe</button></div>
-
-
-                                                <hr />
-
-
-                                            </li>
 
 
 
 
+                                            )}
+                                            </div>
+                                            <div className="row justify-content-center">
+                                                <button className="btn btn-primary" disabled={currentPage <= 0} onClick={prevPage}>Previous</button>
+                                                <button className="btn btn-secondary" disabled={results.length <= 1} onClick={nextPage}>Next</button>
+                                            </div>
 
 
-                                        )}
-                                        </ol>
-                                        <div className="row justify-content-center">
-                                            <button className="btn btn-primary" disabled={currentPage <= 0} onClick={prevPage}>Previous</button>
-                                            <button className="btn btn-secondary" disabled={results.length <= 1} onClick={nextPage}>Next</button>
                                         </div>
+
+
 
                                     </div>
 
@@ -207,14 +212,14 @@ export default function RecipeFilter(props) {
                                 <hr />
                                 <div className="row">
                                     <div className="container">
-                                        <h3>Search Results</h3>
+                                        <h3 className="text-center">Search Results</h3>
                                     </div>
 
 
                                 </div>
                                 <div className="row">
                                     <div className="container">
-                                        <p className="text-warning">No Items Found</p>
+                                        <p className="text-warning text-center">No Items Found</p>
                                     </div>
 
                                 </div>
@@ -226,6 +231,7 @@ export default function RecipeFilter(props) {
 
                 </div>
             </main>
+            <Footer />
         </>
     )
 }
