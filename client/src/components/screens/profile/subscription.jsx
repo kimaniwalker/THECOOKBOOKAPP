@@ -39,8 +39,7 @@ export default function Subscription(props) {
                                     Manage Subsciption
                                 </div>
                                 <div class="card-body">
-                                    <h5 class="card-title">My Current Subscription</h5>
-                                    <p class="card-text">View/Modify your subcription information</p>
+                                    <p class="card-title">View/Modify your subcription information</p>
                                     <button onClick={(e) => manageSubscriptions()} className="btn btn-primary">Stripe Portal</button>
                                 </div>
                                 <div class="card-footer text-muted">

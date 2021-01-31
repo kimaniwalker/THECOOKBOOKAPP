@@ -54,16 +54,7 @@ router.post('/create-checkout-session', async (req, res) => {
 
     line_items: [
       {
-        price_data: {
-          currency: 'usd',
-          recurring: {
-            interval: req.body.recurring
-          },
-          product_data: {
-            name: req.body.name,
-          },
-          unit_amount: req.body.amount * 100,
-        },
+        price: req.body.priceid,
         quantity: 1,
         description: req.body.description,
       },
@@ -88,6 +79,7 @@ router.post('/customer-portal', async (req, res) => {
 
 });
 
+
 router.post('/create-customer', async (req, res) => {
   const customer = await stripe.customers.create({
     description: 'My First Test Customer (created for API docs)',
@@ -98,11 +90,13 @@ router.post('/create-customer', async (req, res) => {
       postal_code: req.body.address.postal_code
     },
     metadata: {
-      id: req.body.metadata.id
+      id: req.body.metadata.id,
+      first_name: req.body.first_name,
+      last_name: req.body.last_name
     },
     email: req.body.email,
     phone: req.body.phone,
-    name: req.body.first_name + req.body.last_name
+    name: req.body.first_name + ' ' + req.body.last_name
 
 
   });
@@ -114,7 +108,7 @@ router.post('/create-customer', async (req, res) => {
 
 router.post('/getCustomer', async (req, res) => {
 
-  try {
+  
     const customer = await stripe.customers.retrieve(
       req.body.customer_id , {
         expand: ['subscriptions']
@@ -122,16 +116,11 @@ router.post('/getCustomer', async (req, res) => {
     );
 
     console.log(customer)
+    console.log(customer.address.city)
     res.json(customer)
 
-  } catch (err) {
-    console.log(err);
-    res.status(400).send('Error Here' + err.message)
-
-  }
-
-
 });
+
 
 
 

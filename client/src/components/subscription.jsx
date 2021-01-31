@@ -16,16 +16,19 @@ export default function Subscription(props) {
     const [allAccess, setAllAccess] = useState(false);
     const [customer_id, setCustomerId] = useState(props.customer_id)
     const [email, setEmail] = useState(props.email)
+    const [priceid , setPriceId] = useState('price_1IE7JhFfRTtewmlrLM1PCrvn');
 
-    const stripePromise = loadStripe('pk_test_51I6rObFfRTtewmlrfcJGo0nR9fJ8jykToYEccFjKeGMg6g8KGfeHv7m1QSQczg5sm4jdQDlLLmpx03YcRCDo8SBg00H7XcUtha');
+    const stripePromise = loadStripe('pk_live_51I6rObFfRTtewmlrAIwGACwJW0gkvVSYF1hvaE4cld9RZgvbxiNeyEbalFHLCLi6WVgmmLSVxBgqaGbW23RjOqIT00NVsKImav');
 
 
     const handleAllStarMembership = () => {
         setName('Kountry Cookin All-Access Membership');
+        setPriceId('price_1IE7LRFfRTtewmlrEa5WCQq7')
         setAmount(10);
         setDescription('All-Access Membership Sign-up');
         setPro(false)
         setAllAccess(true)
+    
         var element = document.getElementById("subCardAll");
         element.classList.add("active");
 
@@ -42,6 +45,7 @@ export default function Subscription(props) {
     const handleProMembership = () => {
         setName('Kountry Cookin Pro Membership');
         setAmount(2);
+        setPriceId('price_1IE7JhFfRTtewmlrLM1PCrvn');
         setDescription('Pro Membership Sign-up');
         setAllAccess(false);
         setPro(true);
@@ -62,7 +66,7 @@ export default function Subscription(props) {
         try {
             let res = await fetch('/api/donate/create-checkout-session', {
                 method: 'POST',
-                body: JSON.stringify({ amount, description, name, mode, recurring, customer_id, email }),
+                body: JSON.stringify({ amount, description, name, mode, recurring, customer_id, email, priceid }),
                 headers: new Headers({ "Content-Type": "application/json" })
 
             });
@@ -129,31 +133,29 @@ export default function Subscription(props) {
                     <div className="row p-4">
                         <div className="row p-4">
                             <div className="col-xl-12 col-md-12 col-sm-12 col-xs-12">
-                                <div className="row py-2">
+                                <div className="row py-2 text-center">
                                     <h6>Kountry Cookin Pro Membership</h6>
                                 </div>
                                 <div className="row justify-content-center">
                                     <p>Enjoy unlimited access to each and every one of our recipes for an affordable price. This membership includes access to our monthly emailed newsletter. Each month we send a special newsletter in which we would love to have you be apart of. This will include tips for cooking, recipes of the week, and a special suprise. We send our newsletter on the first day of each month. Consider upgrading to our All Access Membership if you would like access to weekly emailed & mailed newsletters. </p>
                                 </div>
                                 <div className="row">
-                                    <h6>Included Items:</h6>
+                                    <h6 className="">Included Items:</h6>
                                 </div>
                                 <div className="row">
                                     <ul>
                                         <li>Unlimited access to our recipe store</li>
-                                        <li>Access to our emailed monthly newsletter</li>
+                                        <li>Weekly emailed newsletters</li>
                                     </ul>
                                 </div>
                                 <div className="row">
-                                    <h6>Doesn't Include:</h6>
+                                    <h6 className="text-left">Doesn't Include:</h6>
                                 </div>
                                 <div className="row">
 
                                     <ul>
                                         <li>Access to our mailed monthly newsletter & suprise</li>
-                                        <li>Access to submit featured recipes to our store</li>
-                                        <li>Featured recipes to be included in our weekly newsletter</li>
-
+                                        <li>Access to our monthly magazine</li>
                                     </ul>
                                 </div>
 
@@ -165,11 +167,11 @@ export default function Subscription(props) {
                         <div className="row p-4">
                             <div className="row p-4">
                                 <div className="col-xl-12 col-md-12 col-sm-12 col-xs-12">
-                                    <div className="row py-4">
+                                    <div className="row py-4 text-center">
                                         <h6>Kountry Cookin All Access Membership</h6>
                                     </div>
                                     <div className="row justify-content-center">
-                                        <p>Enjoy unlimited access to each and every one of our recipes for an affordable price. This membership includes access to our monthly emailed newsletter. Each month we send a special newsletter in which we would love to have you be apart of. This will include tips for cooking, recipes of the week, and a special suprise. We send our newsletter on the first day of each month. Consider upgrading to our All Access Membership if you would like access to weekly emailed & mailed newsletters. </p>
+                                        <p>Enjoy unlimited access to each and every one of our recipes for an affordable price. This membership includes access to our monthly emailed newsletter. Each month we send a special magazine in which we would love to have you be apart of. This will include tips for cooking, recipes of the week, and a special suprise. We deliver our magazines on the first day of each month. Consider downgrading to our Pro Membership if you would only like access to our monthly newsletter and online recipe store. </p>
                                     </div>
                                     <div className="row">
                                         <h6>Included Items:</h6>
@@ -180,7 +182,7 @@ export default function Subscription(props) {
                                             <li>Access to our emailed monthly newsletter</li>
                                             <li>Access to our mailed monthly newsletter & suprise</li>
                                             <li>Access to submit featured recipes to our store</li>
-                                            <li>Featured recipes to be included in our weekly newsletter</li>
+                                            <li>Featured recipes to be included in our monthly magazine</li>
                                         </ul>
                                     </div>
 

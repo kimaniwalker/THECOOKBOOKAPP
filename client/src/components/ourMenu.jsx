@@ -12,7 +12,7 @@ const OurMenu = (props) => {
 
            
             <div className="container menu my-5">
-                <div className="row justify-content-center py-3">
+                <div className="row justify-content-center py-3 text-center">
                     <span><i className="fas fa-utensils fa-2x"></i></span>
                 </div>
                 <div className="row justify-content-center">
@@ -22,28 +22,28 @@ const OurMenu = (props) => {
                     <div className="container">
                         <div className="row">
                             <div className="col-xl-12 col-lg-12 col-md-12">
-                                <div className="row justify-content-center py-3">
+                                <div className="row text-center py-3">
                                     <h6>Apple Pie ... 10$</h6>
                                 </div>
-                                <div className="row justify-content-center py-3">
+                                <div className="row text-center py-3">
                                     <h6>Lobster Pie ... 15$</h6>
                                 </div>
-                                <div className="row justify-content-center py-3">
+                                <div className="row text-center py-3">
                                     <h6>Seacrusted Lemon ... 30$</h6>
                                 </div>
-                                <div className="row justify-content-center py-3">
+                                <div className="row text-center py-3">
                                     <h6>Strawberry Shortcake ... 10$</h6>
                                 </div>
-                                <div className="row justify-content-center py-3">
+                                <div className="row text-center py-3">
                                     <h6>Apple Pie ... 10$</h6>
                                 </div>
-                                <div className="row justify-content-center py-3">
+                                <div className="row text-center py-3">
                                     <h6>Lobster Pie ... 15$</h6>
                                 </div>
-                                <div className="row justify-content-center py-3">
+                                <div className="row text-center py-3">
                                     <h6>Seacrusted Lemon ... 30$</h6>
                                 </div>
-                                <div className="row justify-content-center py-3">
+                                <div className="row text-center py-3">
                                     <h6>Strawberry Shortcake ... 10$</h6>
                                 </div>
                             

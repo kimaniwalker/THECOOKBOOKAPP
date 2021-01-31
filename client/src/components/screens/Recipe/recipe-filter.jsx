@@ -53,7 +53,7 @@ export default function RecipeFilter(props) {
             <main className="recipeFilter">
 
                 <div className="container recipe py-4">
-                    <div className="row py-4 justify-content-center">
+                    <div className="row py-4 text-center">
                         <i className="fas fa-search fa-2x"></i>
                     </div>
                     <div className="row py-4 justify-content-center">
