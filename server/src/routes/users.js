@@ -132,31 +132,6 @@ router.put("/", async (req, res) => {
 
 });
 
-router.post('/image', async (req, res, next) => {
-    
-
-
-  if (!req.files || Object.keys(req.files).length === 0) {
-      return res.status(400).send('No files were uploaded.');
-    }
-  
-  let insertObject = req.files.image
-
-  const ASSETS_PATH = join(__dirname, `../../../../client/images/profile/${req.files.image.name}`);
-
-  console.log(insertObject);
-  console.log(ASSETS_PATH);
-
-
-  
-
-  insertObject.mv(ASSETS_PATH, function(err) {
-      if (err)
-        return res.status(500).send(err);
-  
-      res.send('File uploaded!');
-    });
-});
 
 router.delete('/', async (req, res, next) => {
 

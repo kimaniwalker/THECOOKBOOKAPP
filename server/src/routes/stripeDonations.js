@@ -60,8 +60,8 @@ router.post('/create-checkout-session', async (req, res) => {
       },
     ],
     mode: req.body.mode,
-    success_url: `http://localhost:3000/profile`,
-    cancel_url: `http://localhost:3000/profile`,
+    success_url: `https://still-hamlet-66612.herokuapp.com/login`,
+    cancel_url: `https://still-hamlet-66612.herokuapp.com/`,
   });
 
   res.json({ id: session.id });

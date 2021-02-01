@@ -3,27 +3,20 @@
 
 
 .login {
-
-    .awesome {
         background: $dark;
-        height: 100vh;
-        width: 100vw;
-    }
+        min-height: 100vh;
+        width: 100%;
+        
+        #LoginCenterPositioning {
+            padding-top: 10vh;
+        }
 
-    .jugg {
-        background: $primary;
-        height: 100vh;
-        width: 100vw;
-    }
+        #LinkRow {
+            width: 50%;
+        }
+    
 
-    #LoginCenterPositioning {
-        position: absolute;
-        top: 30%;
-    }
-
-    #formRow {
-        top: 30%;
-    }
+    
 
 
 

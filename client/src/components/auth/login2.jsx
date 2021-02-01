@@ -67,19 +67,19 @@ const Login = () => {
   } else {
     return (
       <main className="login">
-        <section className="container-fluid awesome">
-          <div className="container-fluid">
-
-          
-
-            <div className="container pt-5">
+        <section className="container awesome">
+              
               
 
               <div id="formRow" className="row justify-content-center pt-5">
+                <div className="col-lg-6 col-md-6 col-sm-12">
+                  <form id="LoginCenterPositioning" onSubmit={e => login(e)}>
 
-                <form id="LoginCenterPositioning" onSubmit={e => login(e)}>
+<div className="row text-center text-light">
+                <h2>Login</h2>
+              </div>
 
-                  <div className="form-group">
+                  <div className="form-group py-2">
                     <label className="text-light" htmlFor="email">Email</label>
                     <input
                       id="email"
@@ -90,37 +90,41 @@ const Login = () => {
                       required
                     />
                   </div>
-                  <div className="form-group">
+                  <div className="form-group py-2">
                     <label className="text-light" htmlFor="password">Password</label>
                     <input
                       id="password"
                       className="form-control col-auto text-center"
-                      type="password"
+                      type="password" 
                       value={password}
                       onChange={handlePassword}
                       required
                     />
                   </div>
                   {feedbackMessage ? (
-                    <p>{feedbackMessage}</p>
+                    <p className="text-danger">{feedbackMessage}</p>
                   ) : null}
                   <div>
-                    <div id="LinkRow" className="row justify-content-center">
-                      <input type="submit" value="Login" className="btn clickable text-success" />
-                      <Link to="/register" className="btn hasBeenClicked ml-3 text-warning">
+                    <div  className="row justify-content-center py-2">
+                      
+                      <input id="LinkRow" type="submit" value="Login" className="btn clickable text-success" />
+                      <Link  id="LinkRow" to="/register" className="btn hasBeenClicked ml-3 text-warning">
                         Register
-          </Link>
+                    </Link>
                     </div>
 
                   </div>
 
 
                 </form>
+                </div>
+
+                
 
               </div>
 
-            </div>
-          </div>
+         
+         
         </section>
 
       </main>
