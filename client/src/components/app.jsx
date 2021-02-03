@@ -26,8 +26,8 @@ class Navigation extends Component {
                     <Switch>
                         <Route exact path="/" component={Welcome} />
                         <Route exact path="/createrecipe" component={CreateRecipe} />
-                        <Route exact path="/recipesearch" component={RecipeFilter} />
-                        <Route exact path="/recipe/:id" component={RecipeScreen} />
+                        <PrivateRoute exact path="/recipesearch" component={RecipeFilter} />
+                        <PrivateRoute exact path="/recipe/:id" component={RecipeScreen} />
                         <Route exact path="/subscribe" component={BlogAdmin} />
                         <PrivateRoute exact path="/profile" component={Profile} />
                         <Route exact path="/login" component={Login} />

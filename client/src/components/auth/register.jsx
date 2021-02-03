@@ -35,7 +35,7 @@ export default function Register(props) {
                 postal_code: zipcode
             },
             metadata: {
-                id: "Steph"
+                createDate: Date.now()
             },
             email: email,
             phone: phone,

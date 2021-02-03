@@ -46,9 +46,9 @@ export default function Profile(props) {
                         <div className="col-xl-8 col-lg-8 col-md-12 col-sm-12 col-xs-12">
                             
                             <div className="container py-4">
-                                <div className="row justify-content-center py-2">
+                                {/* <div className="row justify-content-center py-2">
                                     <img id="avatar" src={`../../../images/home/${user.profile_picture_link}`}></img>
-                                </div>
+                                </div> */}
                             {customer_id == null ? <IndeterminateProgress message='Loading ...'/> :<Customer customer_id={customer_id} /> } 
                             </div>
 

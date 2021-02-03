@@ -82,7 +82,7 @@ router.post('/customer-portal', async (req, res) => {
 
 router.post('/create-customer', async (req, res) => {
   const customer = await stripe.customers.create({
-    description: 'My First Test Customer (created for API docs)',
+    description: 'API',
     address: {
       city: req.body.address.city,
       state: req.body.address.state,
