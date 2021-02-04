@@ -14,7 +14,7 @@ export default function RecipeOfTheWeek(props) {
                     <div className="row d-flex flex-wrap py-4 justify-content-center">
                         <div className="col-xl-6 col-lg-6 col-md-12 col-sm-12">
                             <div className="row justify-content-center">
-                              <div><div className="row justify-content-center">
+                              <div><div className="row justify-content-center align-items-start">
                                   <img id="thumbnail" src="../../../../images/assets/featured.jpg" />
                                   </div></div>  
                             </div>
