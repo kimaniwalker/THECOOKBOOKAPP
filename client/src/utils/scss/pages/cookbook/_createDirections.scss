@@ -9,24 +9,8 @@
     overflow: auto;
 
   
-    .outline {
-        outline: 1px solid black;
-        padding: 20px 40px 20px;
-    }   
-
-    
-
-    .stepBorder {
-        background: white;
-        padding: 10px 15px 10px;
-        border-radius: 100%;
-        align-items: center;
-        border-color: $primary;
-        
-    }
     #directionsContainer {
         border-radius: 25px;
-        padding: 40px 0px 40px;
         box-shadow: 2px 2px $dark;
         background: whitesmoke;
         

@@ -16,33 +16,16 @@
         padding: 20px 40px 20px;
     }
     
-    .container {
-        width: 50%;
-        
-
-    }
+    
 
     #cookbookcontainer {
         border-radius: 25px;
-        padding: 40px 0px 40px;
         box-shadow: 2px 2px $dark;
         background: whitesmoke;
+        width: 50%;
         
     }
 
-    
-
-    
-
-    .stepBorder {
-        background: white;
-        padding: 10px 15px 10px;
-        border-radius: 100%;
-        align-items: center;
-        background-clip: padding-box;
-        
-        
-    }
 
     
     
@@ -68,8 +51,14 @@
         
         
 
-        .container {
-            width: 85%;
+        
+
+        #cookbookcontainer {
+            border-radius: 25px;
+            box-shadow: 2px 2px $dark;
+            background: whitesmoke;
+            width: 75%;
+            
         }
 
 

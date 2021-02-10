@@ -37,11 +37,11 @@ router.use('/classes', classesRouter);
 router.use('/profile', profileRouter);
 router.use('/workrequest', WorkRequestRouter);
 
-router.route('*')
+/* router.route('*')
 .post(tokenMiddleware, isLoggedIn)
 .put(tokenMiddleware, isLoggedIn)
 .delete(tokenMiddleware, isLoggedIn)
-.get(tokenMiddleware, isLoggedIn);
+.get(tokenMiddleware, isLoggedIn); */
 
 
 export default router;

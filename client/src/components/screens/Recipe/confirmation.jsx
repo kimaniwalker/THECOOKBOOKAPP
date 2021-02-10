@@ -8,8 +8,10 @@ export default function Confirmation(props) {
     const [cookbookId, setCookbookId] = useState('');
 
     useEffect(() => {
+        handleCloudinaryUpload();
         handleCookbook();
         handleUpload();
+        
 
 
     }, []);
@@ -17,6 +19,16 @@ export default function Confirmation(props) {
 
     const back = (e) => {
         e.preventDefault();
+        let requestOptions = {
+            method: 'DELETE',
+            redirect: 'follow'
+          };
+          
+          fetch(`api/cookbook/${cookbookId}`, requestOptions)
+            .then(response => response.text())
+            .then(result => console.log(result))
+            .catch(error => console.log('error', error));
+
         props.prevStep();
     };
 
@@ -37,6 +49,23 @@ export default function Confirmation(props) {
 
     }
 
+    const handleCloudinaryUpload = async(e) => {
+        let formdata = new FormData();
+        formdata.append("file", props.values.images, props.values.images.name);
+        formdata.append("upload_preset", "cookbook");
+
+        let requestOptions = {
+            method: 'POST',
+            body: formdata,
+            redirect: 'follow'
+        };
+
+        fetch("https://api.cloudinary.com/v1_1/LOKIDDO/auto/upload", requestOptions)
+            .then(response => response.json())
+            .then(result => props.handleCookbookImage(result.url))
+            .catch(error => console.log('error', error));
+    }
+
     const handleCookbook = async (e) => {
 
         let cookbookObject = {
@@ -47,19 +76,12 @@ export default function Confirmation(props) {
             calories: props.values.calories,
             skill_level: props.values.skillLevel,
             featured: props.values.featured,
-            approved: props.values.approved
+            approved: props.values.approved,
+            description: props.values.description
 
         }
 
-
-
         console.log(cookbookObject)
-
-
-
-
-
-
 
         try {
 
@@ -72,9 +94,8 @@ export default function Confirmation(props) {
             let id = await res.json();
             console.log(id)
             setCookbookId(id.id);
-
-
             console.log(cookbookId)
+            
         } catch (e) {
             console.log(e);
         }
@@ -83,9 +104,6 @@ export default function Confirmation(props) {
 
 
     }
-
-
-
 
     const handleDirections = async (cookbookId) => {
         let directionsObject = {
@@ -106,6 +124,7 @@ export default function Confirmation(props) {
             let id = await res.json();
 
             console.log(id)
+            
         } catch (e) {
 
         }
@@ -130,6 +149,7 @@ export default function Confirmation(props) {
             });
             let id = await res.json();
             console.log(id)
+            
 
         } catch (e) {
 
@@ -137,11 +157,57 @@ export default function Confirmation(props) {
 
     }
 
+    const updateImage = async (cookbookId) => {
+        let cookbookObject = {
+            id: cookbookId,
+            name: props.values.name,
+            images: props.values.cookbookImage,
+            tags: JSON.stringify(props.values.tagsList),
+            serving_size: props.values.servingSize,
+            calories: props.values.calories,
+            skill_level: props.values.skillLevel,
+            featured: props.values.featured,
+            approved: props.values.approved,
+            description: props.values.description,
+            user: props.values.user
 
-    const handleSubmit = () => {
-        handleIngredients(cookbookId);
-        handleDirections(cookbookId);
-        setTimeout(redirect, 2000);
+        }
+
+        console.log(cookbookObject)
+
+        try {
+
+            let res = await fetch('/api/cookbook', {
+                method: 'PUT',
+                body: JSON.stringify(cookbookObject),
+                headers: new Headers({ "Content-Type": "application/json" })
+
+            });
+            let update = await res.json();
+            console.log(update)
+        
+            
+        } catch (e) {
+            console.log(e);
+        }
+
+    }
+
+
+    const handleSubmit = async () => {
+       
+        try {
+            handleIngredients(cookbookId);
+            handleDirections(cookbookId);
+            updateImage(cookbookId);
+            /* setTimeout(redirect, 2000); */
+
+        } catch (e) {
+            console.log(e)
+        }
+        
+
+        
 
     }
 
@@ -163,7 +229,7 @@ export default function Confirmation(props) {
                             <div className="row py-3 justify-content-center bg-danger">
                                 <h2>{props.values.name}</h2>
                             </div>
-                            <div className="row py-3 bg-light">
+                            <div className="row py-3 bg-light text-center">
                                 <div className="col-lg-4 col-md-4 col-sm-12">
                                     <div className="row justify-content-center py-3">
                                         <i id="utinsils" className="fas fa-utensils fa-2x"></i>
@@ -198,7 +264,7 @@ export default function Confirmation(props) {
                                 <hr id="line" />
                             </div>
                             <div className="container">
-                                <div className="row py-3">
+                                <div className="row py-3 text-center">
                                     <h4>Directions</h4>
                                     <div className="py-2">
                                         <div>{props.values.directionsList.map((item) =>
@@ -211,7 +277,7 @@ export default function Confirmation(props) {
                                 </div>
 
 
-                                <div className="row py-3">
+                                <div className="row py-3 text-center">
                                     <h4>Images</h4>
                                 </div>
 
@@ -256,7 +322,7 @@ export default function Confirmation(props) {
                             <div className="row justify-content-center py-4">
                                 <h2>Ingredients</h2>
                             </div>
-                            <div className="row justify-content-center py-4">
+                            <div className="row justify-content-center py-4 text-center">
 
                                 <div>{props.values.ingredientList.map((item) =>
 
@@ -267,8 +333,8 @@ export default function Confirmation(props) {
 
 
                             </div>
-                            <div className="row justify-content-center">
-                                <p>Submitted By: Future Hendrix</p>
+                            <div className="row justify-content-center text-center">
+                                <p>Submitted By: Kountry Cookin</p>
                             </div>
 
                         </div>

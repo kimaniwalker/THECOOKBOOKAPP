@@ -60,7 +60,9 @@ router.post('/', async (req, res, next) => {
         calories: req.body.calories,
         skill_level: req.body.skill_level,
         featured: req.body.featured,
-        approved: req.body.approved
+        approved: req.body.approved,
+        description: req.body.description,
+        user: req.body.user
 
     }
 
@@ -120,7 +122,10 @@ router.put('/', async (req, res, next) => {
         calories: req.body.calories,
         skill_level: req.body.skill_level,
         featured: req.body.featured,
-        approved: req.body.approved
+        approved: req.body.approved,
+        description: req.body.description,
+        user: req.body.user,
+        _lastModified: Date.now()
 
     }
 
@@ -136,7 +141,7 @@ router.put('/', async (req, res, next) => {
     }
 })
 
-router.delete('/', async (req, res, next) => {
+router.delete('/:id', async (req, res, next) => {
 
     try {
         let results = await cookbook.delete(req.params.id);

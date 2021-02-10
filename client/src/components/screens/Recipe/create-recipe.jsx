@@ -11,14 +11,16 @@ export default function CreateRecipe(props) {
     const [name, setName] = useState('')
     const [_lastModified, setLastModified] = useState(Date.now())
     const [images, setImages] = useState('')
+    const [cookbookImage, setCookbookImage] = useState('')
     const [tags, setTags] = useState('')
     const [tagsList, setTagsList] = useState([]);
     const [servingSize, setServingSize] = useState('')
     const [calories, setCalories] = useState('')
     const [featured, setFeatured] = useState(false);
-    const [skillLevel, setSkillLevel] = useState('Beginner');
+    const [skillLevel, setSkillLevel] = useState('Easy');
     const [step, setStep] = useState(1);
     const [approved, setApproved] = useState(false);
+    const [description, setDescription] = useState('');
 
     const [cookbookId, setCookbookId] = useState(id);
     const [ingredient, setIngredient] = useState('');
@@ -27,7 +29,7 @@ export default function CreateRecipe(props) {
     const [direction, setDirection] = useState('');
     const [directionsList, setDirectionsList] = useState([]);
 
-    const values = { id, step, name, _lastModified, images, tags, tagsList, servingSize, cookbookId, ingredient, ingredientList, direction, directionsList, calories, featured, skillLevel, approved };
+    const values = { id, step, name, _lastModified, images, tags, tagsList, servingSize, cookbookId, ingredient, ingredientList, direction, directionsList, calories, featured, skillLevel, approved,description,cookbookImage };
 
     /* Create Cookbook */
     const handleNameChange = (name) => {
@@ -47,6 +49,11 @@ export default function CreateRecipe(props) {
     const handleImageChange = (images) => {
         setImages(images)
         console.log(images)
+    }
+
+    const handleCookbookImage = (image) => {
+        setCookbookImage(image)
+        console.log(image)
     }
 
     const handleApprovedChange = (approved) => {
@@ -87,6 +94,10 @@ export default function CreateRecipe(props) {
     /* Create Directions */
     const handleAddDirections = (direction) => {
         setDirection(direction)
+    }
+
+    const handleAddDescription = (description) => {
+        setDescription(description)
     }
 
     const handleAddTags = (tags) => {
@@ -145,6 +156,7 @@ export default function CreateRecipe(props) {
                 handleCaloriesChange={handleCaloriesChange}
                 handleTagsPush={handleTagsPush}
                 handleSkillChange={handleSkillChange}
+                handleAddDescription={handleAddDescription}
                 values={values}
             />);
 
@@ -177,7 +189,8 @@ export default function CreateRecipe(props) {
         case 5:
             return (<Confirmation
                 prevStep={prevStep}
-                values={values} />)
+                values={values}
+                handleCookbookImage={handleCookbookImage} />)
     }
 
 

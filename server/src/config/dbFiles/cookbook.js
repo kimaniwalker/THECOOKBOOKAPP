@@ -58,12 +58,12 @@ cookbook.one = (id) => {
     })
 }
 
-cookbook.insert = (name , images, tags, serving_size, calories,skill_level, featured) => {
+cookbook.insert = (name , images, tags, serving_size, calories,skill_level, featured, description, user) => {
 
 
     return new Promise((resolve, reject) => {
 
-        pool.query(`INSERT INTO cookbook SET ?`, [name , images, tags, serving_size, calories,skill_level, featured] ,(err, results) =>{
+        pool.query(`INSERT INTO cookbook SET ?`, [name , images, tags, serving_size, calories,skill_level, featured, description, user] ,(err, results) =>{
 
             if(err) {
                 return reject(err);
@@ -75,12 +75,12 @@ cookbook.insert = (name , images, tags, serving_size, calories,skill_level, feat
     })
 }
 
-cookbook.update = ({id ,name , images, tags, serving_size, calories,skill_level, featured, approved }) => {
+cookbook.update = ({name,tags,_lastModified,images, description, user, skill_level, featured, approved, calories, id }) => {
 
 
     return new Promise((resolve, reject) => {
 
-        pool.query(`UPDATE cookbook SET name = ?,tags = ?,_lastModified = ? ,images = ? WHERE id = ? `, [id, name , images, tags, serving_size, calories,skill_level, featured, approved], (err, results) =>{
+        pool.query(`UPDATE cookbook SET name = ?,tags = ?,_lastModified = ? ,images = ? , description = ?, user = ?, skill_level = ?, featured = ?, approved = ?, calories = ? WHERE id = ? `, [name,tags,_lastModified,images, description, user, skill_level, featured, approved, calories, id], (err, results) =>{
 
             if(err) {
                 return reject(err);

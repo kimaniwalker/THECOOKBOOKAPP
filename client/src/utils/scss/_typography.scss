@@ -67,7 +67,7 @@ a {
   font-size: 1.2rem;
 }
 
-input[type=text]::placeholder {
+/* input[type=text]::placeholder {
   font-family: 'Open Sans Condensed', sans-serif;
   font-weight: 300;
   font-size: 1rem;
@@ -152,7 +152,7 @@ input[type=text]:hover  {
 
   
 }
-
+ */
 li {
   font-family: 'Abel', sans-serif;
   font-size: 1rem; 
@@ -164,7 +164,7 @@ label {
 
 
 @media only screen and (min-width: 600px) {
-  input[type=text] {
+  /* input[type=text] {
         
     max-width: 40vw;
     padding: 15px 5px 15px;
@@ -176,7 +176,7 @@ label {
     
   
     
-  }   
+  }  */  
   
 
 }

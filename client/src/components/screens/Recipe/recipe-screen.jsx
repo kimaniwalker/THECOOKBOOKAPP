@@ -208,7 +208,7 @@ export default function RecipeScreen(props) {
 
 
                             <div className="row py-3">
-                                <img width='40%' data-toggle="modal" data-target="#exampleModal" src={`../../../images/assets/${cookbook.images}`}></img>
+                                <img width='40%' data-toggle="modal" data-target="#exampleModal" src={cookbook.images}></img>
 
 
 
@@ -223,7 +223,7 @@ export default function RecipeScreen(props) {
                                                 </button>
                                             </div>
                                             <div class="modal-body">
-                                                <img width='100%' data-toggle="modal" data-target="#exampleModal" src={`../../../images/assets/${cookbook.images}`}></img>
+                                                <img width='100%' data-toggle="modal" data-target="#exampleModal" src={cookbook.images}></img>
                                             </div>
                                             <div class="modal-footer">
                                                 <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
